@@ -9,7 +9,7 @@ import Foundation
 
 class IGDBConstants {
     static let AuthBaseUrl = "https://id.twitch.tv/oauth2/token"
-    static let APIBaseUrl = "https://api.igdb.com/v4"
+    static let APIBaseUrl = "https://api.igdb.com/v4/"
     
     static var CLIENT_ID: String {
         get {

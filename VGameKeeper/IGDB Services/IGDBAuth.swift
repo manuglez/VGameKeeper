@@ -36,11 +36,11 @@ class IGDBAuth {
         print("Auth URL: \(urlString)")
         
         let url = URL(string: urlString)!
-        var requestHeader = URLRequest(url: url )
-        requestHeader.httpMethod = "POST"
+        var urlRequest = URLRequest(url: url )
+        urlRequest.httpMethod = "POST"
        
         pendingToken = true
-        let (responseData, urlResponse) = try await URLSession.shared.data(for: requestHeader)
+        let (responseData, urlResponse) = try await URLSession.shared.data(for: urlRequest)
         
         if let httpResponse = urlResponse as? HTTPURLResponse {
             switch httpResponse.statusCode {
