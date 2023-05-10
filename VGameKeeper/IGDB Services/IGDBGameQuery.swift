@@ -20,13 +20,99 @@ class IGDBGameQuery {
     // Singleton global instance
     static let shared: IGDBGameQuery = IGDBGameQuery()
     
-    private let GAME_FIELDS =  " game.age_ratings,game.checksum,game.collection.name,game.cover.url,game.created_at,game.first_release_date,game.franchise.name,game.franchises,game.genres.name,game.name,game.release_dates,game.status,game.storyline,game.summary,game.total_rating,game.total_rating_count,game.updated_at,game.url,game.version_parent,game.version_title"
+    /*private let GAME_FIELDS =  " game.age_ratings,game.checksum,game.collection.name,game.cover.url,game.created_at,game.first_release_date,game.franchise.name,game.franchises,game.genres.name,game.name,game.release_dates,game.status,game.storyline,game.summary,game.total_rating,game.total_rating_count,game.updated_at,game.url,game.version_parent,game.version_title.name"*/
+    let GAME_FIELDS =  " age_ratings,checksum,collection.name,cover.url,created_at,first_release_date,franchise.name,franchises,genres.name,name,release_dates,status,storyline,summary,total_rating,total_rating_count,updated_at,url,version_parent,version_title,platforms.name"
+    let FULL_GAME_FIELDS =  " age_ratings.category, age_ratings.rating, category, collection.name, cover.url, first_release_date, follows, game_modes.name, genres.name, hypes, player_perspectives.name, name, themes.name, platforms.name, screenshots.url, slug, summary, storyline, status, total_rating, total_rating_count, url, similar_games.name, similar_games.cover.url"
     let PLATFORM_FIELDS = "platform.name"
     let RELEASE_FIELDS = "id,category,checksum,created_at,date,human,platform,updated_at"
     
     private init() {
         
     }
+    
+    func recentReleases() async throws -> GamesList {
+        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.games.rawValue
+        let nowTimestamp = Int(Date.now.timeIntervalSince1970)
+        let filter = "where first_release_date < \(nowTimestamp) & themes != (42)"
+        let sort = "sort first_release_date desc "
+        let limit = "limit 10"
+        //let requestBody = "fields \(GAME_FIELDS), \(RELEASE_FIELDS), \(PLATFORM_FIELDS); \(filter); \(sort); \(limit);"
+        let requestBody = "fields \(GAME_FIELDS); \(filter); \(sort); \(limit);"
+       
+        let releases = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: GamesList.self)
+        
+        if releases != nil {
+            for game in releases! {
+                print("Relesase: \(game.name) on \(game.firstReleaseDate ?? 0)")
+            }
+        }
+        
+        return releases ?? []
+        
+        /*
+         fields date, human, platform.name, game.name, game.cover.url; where date < 1683354842; sort date desc; limit 10;
+         fields *, platform.*, game.*; where date < 1683354842; sort date desc; limit 10;
+         */
+        
+       
+        
+    }
+    
+    func nextReleases() async throws -> GamesList {
+        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.games.rawValue
+        let nowTimestamp = Int(Date.now.timeIntervalSince1970)
+        let filter = "where first_release_date > \(nowTimestamp) & themes != (42)"
+        let sort = "sort first_release_date asc "
+        let limit = "limit 10"
+        //let requestBody = "fields \(GAME_FIELDS), \(RELEASE_FIELDS), \(PLATFORM_FIELDS); \(filter); \(sort); \(limit);"
+        let requestBody = "fields \(GAME_FIELDS); \(filter); \(sort); \(limit);"
+       
+        let releases = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: GamesList.self)
+        
+        if releases != nil {
+            for game in releases! {
+                print("Relesase: \(game.name) on \(game.firstReleaseDate ?? 0)")
+            }
+        }
+        
+        return releases ?? []
+    }
+    
+    func topRated() async throws -> GamesList {
+        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.games.rawValue
+        let filter = "where total_rating != null & total_rating_count > 100"
+        let sort = "sort total_rating desc"
+        let limit = "limit 10"
+        let requestBody = "fields \(GAME_FIELDS); \(filter); \(sort); \(limit);"
+               
+        let topRatedGames = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: GamesList.self)
+        
+        if topRatedGames != nil {
+            for topGame in topRatedGames! {
+                print("Top Game: \(topGame.name) on \(topGame.firstReleaseDate ?? 0)")
+            }
+        }
+        
+        return topRatedGames ?? []
+    }
+    
+    func singleGame(byId gameID: Int) async throws -> FullGame? {
+        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.games.rawValue
+        let filter = "where id = \(gameID)"
+        let requestBody = "fields \(FULL_GAME_FIELDS); \(filter);"
+       
+        if let singleGame = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: FullGameList.self){
+            
+            if singleGame.count > 0{
+                let game = singleGame[0]
+                print("Game Fetched: \(game.name)")
+                return game
+            }
+        }
+        
+        return nil
+    }
+    
     private func makeRequest<T: Decodable>(
         withRawBody requestBody:String,
         withUrlString urlString: String,
@@ -49,51 +135,4 @@ class IGDBGameQuery {
          
         return nil
     }
-    
-    func recentReleases() async throws -> [Release] {
-        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.releaseDates.rawValue
-        let nowTimestamp = Int(Date.now.timeIntervalSince1970)
-        let filter = "where date < \(nowTimestamp) & game.themes != (42)"
-        let sort = "sort date desc "
-        let limit = "limit 10"
-        let requestBody = "fields \(GAME_FIELDS), \(RELEASE_FIELDS), \(PLATFORM_FIELDS); \(filter); \(sort); \(limit);"
-       
-        let releases = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: Releases.self)
-        
-        if releases != nil {
-            for rel in releases! {
-                print("Relesase: \(rel.game.name) on \(rel.human)")
-            }
-        }
-        
-        return releases ?? []
-        
-        /*
-         fields date, human, platform.name, game.name, game.cover.url; where date < 1683354842; sort date desc; limit 10;
-         fields *, platform.*, game.*; where date < 1683354842; sort date desc; limit 10;
-         */
-        
-       
-        
-    }
-    
-    func nextReleases() async throws -> [Release] {
-        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.releaseDates.rawValue
-        let nowTimestamp = Int(Date.now.timeIntervalSince1970)
-        let filter = "where date > \(nowTimestamp) & game.themes != (42)"
-        let sort = "sort date asc "
-        let limit = "limit 10"
-        let requestBody = "fields \(GAME_FIELDS), \(RELEASE_FIELDS), \(PLATFORM_FIELDS); \(filter); \(sort); \(limit);"
-       
-        let releases = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: Releases.self)
-        
-        if releases != nil {
-            for rel in releases! {
-                print("Relesase: \(rel.game.name) on \(rel.human)")
-            }
-        }
-        
-        return releases ?? []
-    }
-    
 }

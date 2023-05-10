@@ -166,7 +166,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="x3k-fr-Fbv">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="bjl-sj-Xn2">
-                            <color key="tintColor" systemColor="systemTealColor"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <action selector="barButtonSearchPressed:" destination="6GI-mC-gIS" id="77r-tb-tDa"/>
                             </connections>
@@ -174,6 +174,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eIT-DA-Int" id="5q0-hh-us7"/>
+                        <segue destination="HYl-b2-KXY" kind="show" identifier="segueGameDetail" id="NDM-p7-YBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8n-ug-Eka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,10 +185,9 @@
         <scene sceneID="pfU-OV-f4N">
             <objects>
                 <tabBarController id="V1g-YN-RZy" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMg-v4-Fnp">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="CMg-v4-Fnp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="MiY-uk-a2q" kind="relationship" relationship="viewControllers" id="Kjf-R5-AYt"/>
@@ -219,12 +219,69 @@
             </objects>
             <point key="canvasLocation" x="1713.740458015267" y="-333.0985915492958"/>
         </scene>
+        <!--Game Detail View Controller-->
+        <scene sceneID="D23-gc-0wa">
+            <objects>
+                <viewController id="HYl-b2-KXY" customClass="GameDetailViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ADZ-Nx-wUW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VCm-eF-Yb7">
+                                <rect key="frame" x="16" y="103.00000000000001" width="196.66666666666666" height="255.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VCm-eF-Yb7" secondAttribute="height" multiplier="1:1.3" id="ggt-2i-YJC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzh-jY-0oT">
+                                <rect key="frame" x="16" y="386.33333333333331" width="361" height="40.666666666666686"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="[GAME_SUMMARY]" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F7I-oF-gzi">
+                                <rect key="frame" x="222.66666666666663" y="103.00000000000001" width="154.33333333333337" height="255.33333333333337"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eLw-Od-JWy"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstItem="eLw-Od-JWy" firstAttribute="trailing" secondItem="Kzh-jY-0oT" secondAttribute="trailing" constant="16" id="AZG-ts-TKx"/>
+                            <constraint firstItem="F7I-oF-gzi" firstAttribute="top" secondItem="VCm-eF-Yb7" secondAttribute="top" id="CN0-kW-Rl5"/>
+                            <constraint firstItem="F7I-oF-gzi" firstAttribute="leading" secondItem="VCm-eF-Yb7" secondAttribute="trailing" constant="10" id="Du7-4W-Q01"/>
+                            <constraint firstItem="VCm-eF-Yb7" firstAttribute="top" secondItem="eLw-Od-JWy" secondAttribute="top" id="SkG-v4-w5V"/>
+                            <constraint firstItem="F7I-oF-gzi" firstAttribute="bottom" secondItem="VCm-eF-Yb7" secondAttribute="bottom" id="Via-xt-CpE"/>
+                            <constraint firstItem="VCm-eF-Yb7" firstAttribute="leading" secondItem="eLw-Od-JWy" secondAttribute="leading" constant="16" id="bgN-g1-52n"/>
+                            <constraint firstItem="VCm-eF-Yb7" firstAttribute="width" secondItem="ADZ-Nx-wUW" secondAttribute="width" multiplier="0.5" id="kc7-h2-ZqD"/>
+                            <constraint firstItem="Kzh-jY-0oT" firstAttribute="leading" secondItem="eLw-Od-JWy" secondAttribute="leading" constant="16" id="oQT-R9-hpc"/>
+                            <constraint firstItem="Kzh-jY-0oT" firstAttribute="top" secondItem="VCm-eF-Yb7" secondAttribute="bottom" constant="28" id="onY-0f-G4K"/>
+                            <constraint firstItem="eLw-Od-JWy" firstAttribute="trailing" secondItem="F7I-oF-gzi" secondAttribute="trailing" constant="16" id="vSY-jQ-LKZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ca5-LV-Wyz"/>
+                    <connections>
+                        <outlet property="coverImage" destination="VCm-eF-Yb7" id="S4w-Ee-xHy"/>
+                        <outlet property="labelGameTitle" destination="Kzh-jY-0oT" id="X7T-nu-wAI"/>
+                        <outlet property="textViewSummary" destination="F7I-oF-gzi" id="n4k-O5-rTB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rj4-Oq-WTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3771.7557251908397" y="-48.591549295774648"/>
+        </scene>
     </scenes>
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="tloz_totk" width="176" height="234.33332824707031"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -233,9 +290,6 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

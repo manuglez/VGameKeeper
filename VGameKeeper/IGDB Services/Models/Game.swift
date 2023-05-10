@@ -9,7 +9,7 @@ import Foundation
 // MARK: - Game
 struct Game: Codable {
     let id: Int
-    let cover: Cover
+    let cover: Cover?
     let createdAt: Int
     let firstReleaseDate: Int?
     let genres: [IGDB_Item]?
@@ -23,6 +23,7 @@ struct Game: Codable {
     let checksum: String
     let ageRatings: [Int]?
     let collection: IGDB_Item?
+    let platforms: [IGDB_Item]?
     let status: Int?
     let storyline: String?
 
@@ -38,9 +39,10 @@ struct Game: Codable {
         case updatedAt = "updated_at"
         case url, checksum
         case ageRatings = "age_ratings"
-        case collection, status, storyline
+        case collection, platforms,status, storyline
     }
 }
+typealias GamesList = [Game]
 
 /*
 // MARK: - Game

@@ -17,6 +17,12 @@
 		8D2340DC2A044578005A62A9 /* VGameKeeper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D2340DA2A044578005A62A9 /* VGameKeeper.xcdatamodeld */; };
 		8D2340DE2A044579005A62A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D2340DD2A044579005A62A9 /* Assets.xcassets */; };
 		8D2340E12A044579005A62A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D2340DF2A044579005A62A9 /* LaunchScreen.storyboard */; };
+		8D28A7032A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A7022A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift */; };
+		8D28A7052A0B03C000C3D7C3 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A7042A0B03C000C3D7C3 /* GameDetailViewController.swift */; };
+		8D28A7072A0B2A3A00C3D7C3 /* GameDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A7062A0B2A3A00C3D7C3 /* GameDetailViewModel.swift */; };
+		8D28A7092A0B2A6D00C3D7C3 /* GamePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A7082A0B2A6D00C3D7C3 /* GamePage.swift */; };
+		8D28A70B2A0B4D4F00C3D7C3 /* IGDBUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */; };
+		8D28A70D2A0B4ED600C3D7C3 /* FullGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */; };
 		8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */; };
 		8D74C6622A0599AF00E76443 /* IGDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C6612A0599AF00E76443 /* IGDBConstants.swift */; };
 		8D74C6652A05BAFE00E76443 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C6642A05BAFE00E76443 /* TokenResponse.swift */; };
@@ -47,6 +53,12 @@
 		8D2340DD2A044579005A62A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D2340E02A044579005A62A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D2340E22A044579005A62A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D28A7022A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		8D28A7042A0B03C000C3D7C3 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		8D28A7062A0B2A3A00C3D7C3 /* GameDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewModel.swift; sourceTree = "<group>"; };
+		8D28A7082A0B2A6D00C3D7C3 /* GamePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePage.swift; sourceTree = "<group>"; };
+		8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBUtilities.swift; sourceTree = "<group>"; };
+		8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGame.swift; sourceTree = "<group>"; };
 		8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBAuth.swift; sourceTree = "<group>"; };
 		8D74C6612A0599AF00E76443 /* IGDBConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBConstants.swift; sourceTree = "<group>"; };
 		8D74C6642A05BAFE00E76443 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
@@ -121,6 +133,7 @@
 				8D74C6662A05CA7800E76443 /* IGDBManager.swift */,
 				8D74C66A2A061DCD00E76443 /* IGDBGameQuery.swift */,
 				8D1562EF2A0772CC0000F850 /* IGDBRequest.swift */,
+				8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */,
 			);
 			path = "IGDB Services";
 			sourceTree = "<group>";
@@ -133,6 +146,7 @@
 				8D1562EB2A076B100000F850 /* Game.swift */,
 				8D1562ED2A076B340000F850 /* IGDB_Item.swift */,
 				8D7CE8702A09AF130096C330 /* Cover.swift */,
+				8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				8D7CE8732A09C8550096C330 /* UIImageView+ImageFetch.swift */,
+				8D28A7022A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8DE938842A08E1F5000920C0 /* DiscoverViewModel.swift */,
+				8D28A7062A0B2A3A00C3D7C3 /* GameDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -175,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2340D52A044578005A62A9 /* HomeViewController.swift */,
+				8D28A7042A0B03C000C3D7C3 /* GameDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -184,6 +201,7 @@
 			children = (
 				8DE938892A08E2A2000920C0 /* DiscoverModel.swift */,
 				8DE9388B2A08E344000920C0 /* FeaturedGame.swift */,
+				8D28A7082A0B2A6D00C3D7C3 /* GamePage.swift */,
 			);
 			path = "App Models";
 			sourceTree = "<group>";
@@ -260,23 +278,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D28A70D2A0B4ED600C3D7C3 /* FullGame.swift in Sources */,
 				8D7CE8772A0A25E60096C330 /* DiscoverCollectionViewCell.swift in Sources */,
+				8D28A7032A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift in Sources */,
 				8DE9388A2A08E2A2000920C0 /* DiscoverModel.swift in Sources */,
 				8D74C66B2A061DCD00E76443 /* IGDBGameQuery.swift in Sources */,
 				8D74C66D2A06339F00E76443 /* Realease.swift in Sources */,
 				8D2340DC2A044578005A62A9 /* VGameKeeper.xcdatamodeld in Sources */,
 				8D7CE87C2A0A2EEF0096C330 /* DiscoverTableViewCell.swift in Sources */,
 				8DE938852A08E1F6000920C0 /* DiscoverViewModel.swift in Sources */,
+				8D28A70B2A0B4D4F00C3D7C3 /* IGDBUtilities.swift in Sources */,
 				8D2340D62A044578005A62A9 /* HomeViewController.swift in Sources */,
 				8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */,
 				8D7CE8712A09AF130096C330 /* Cover.swift in Sources */,
 				8D7CE8792A0A2A2D0096C330 /* DiscoverCollectionView.swift in Sources */,
 				8DE9388C2A08E344000920C0 /* FeaturedGame.swift in Sources */,
+				8D28A7072A0B2A3A00C3D7C3 /* GameDetailViewModel.swift in Sources */,
 				8D74C6622A0599AF00E76443 /* IGDBConstants.swift in Sources */,
 				8D1562EE2A076B340000F850 /* IGDB_Item.swift in Sources */,
 				8D1562EC2A076B100000F850 /* Game.swift in Sources */,
 				8D1562F02A0772CC0000F850 /* IGDBRequest.swift in Sources */,
 				8D7CE8742A09C8550096C330 /* UIImageView+ImageFetch.swift in Sources */,
+				8D28A7052A0B03C000C3D7C3 /* GameDetailViewController.swift in Sources */,
+				8D28A7092A0B2A6D00C3D7C3 /* GamePage.swift in Sources */,
 				8D74C6652A05BAFE00E76443 /* TokenResponse.swift in Sources */,
 				8D74C6672A05CA7800E76443 /* IGDBManager.swift in Sources */,
 				8D2340D22A044578005A62A9 /* AppDelegate.swift in Sources */,

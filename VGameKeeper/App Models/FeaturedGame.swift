@@ -11,7 +11,7 @@ struct FeaturedGame: Identifiable{
     var id: UUID
     var dbIdentifier: Int
     var name: String
-    var platformName: String
+    //var platformName: String
     var imageUrl: String
     var imageData: Data?
     

@@ -11,7 +11,8 @@ class HomeViewController: UIViewController {
     //let imagesArray = ["nintendo_switch", "PC", "ps5", "xbox_seriesx"]
     let imagesArray = ["assasinscreed", "lastofus_part1", "re4_remake", "tloz_totk"]
     
-    var discoverViewModel = DiscoverViewModel()
+    let discoverViewModel = DiscoverViewModel()
+    var selectedGame: FeaturedGame?
     
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var collectionView: UICollectionView!
@@ -34,6 +35,15 @@ class HomeViewController: UIViewController {
             }
         }
         
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueGameDetail" {
+            let gameVC = segue.destination as! GameDetailViewController
+            gameVC.gameInfo = selectedGame
+        }
     }
     
     /*func concurrencyTest() async {
@@ -47,6 +57,23 @@ class HomeViewController: UIViewController {
     @IBAction func barButtonSearchPressed(_ sender: Any) {
         print("barButtonSearchPressed")
     }
+}
+
+extension HomeViewController: FeaturedGamesGridDelegate {
+    func gameSelectedFromGrid(itemIndex: Int, featuredGame: FeaturedGame) {
+        selectedGame = featuredGame
+        self.performSegue(withIdentifier: "segueGameDetail", sender: self)
+        /*showSimpleAlert(
+            title: "gameSelectedFromGrid",
+            message: "Index: \(itemIndex) element ID: \(featuredGame.dbIdentifier) Game: \(featuredGame.name)")
+         */
+    }
+    
+    func gameSelectedFromGrid(itemIndex: Int, elemendId: Int) {
+        
+    }
+    
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -74,7 +101,8 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let tableCell = tableView.dequeueReusableCell(withIdentifier: "discoverTableCell", for: indexPath) as? DiscoverTableViewCell {
-            tableCell.viewModel = discoverViewModel.discoveries[indexPath.section]
+            tableCell.discoverModel = discoverViewModel.discoveries[indexPath.section]
+            tableCell.featuredGameDelegate = self
             return tableCell
         }
         
@@ -91,55 +119,3 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     
 }
-/*
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellH = collectionView.frame.size.height
-        let cellW = cellH / 1.3
-        return CGSize(width: cellW, height: cellH)
-    }
-}
-
-
-extension HomeViewController: UICollectionViewDataSource {
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if discoverViewModel.discoveries.count > 0 {
-            return discoverViewModel.discoveries[0].gamesList.count
-        }
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath)
-        
-        guard let imageView = cell.viewWithTag(1) as? UIImageView else {
-            return UICollectionViewCell()
-        }
-        
-        guard let cellLabel = cell.viewWithTag(2) as? UILabel else {
-            return UICollectionViewCell()
-        }
-        
-        //imageView.image = UIImage(named: imagesArray[indexPath.row])
-        if let url = URL(string: discoverViewModel.discoveries[0].gamesList[indexPath.row].mediumSizeUrl()){
-            cellLabel.isHidden = true
-            imageView.fetch(fromURL: url)
-        } else {
-            cellLabel.text = discoverViewModel.discoveries[0].gamesList[indexPath.row].name
-        }
-       
-        //
-        
-        return cell
-    }
-    
-    
-}
-
-*/
