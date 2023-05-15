@@ -16,6 +16,9 @@ struct FeaturedGame: Identifiable{
     var imageData: Data?
     
     func thumbnailUrl() -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
         if imageUrl.starts(with: "https:") {
             return imageUrl
         }
@@ -24,6 +27,9 @@ struct FeaturedGame: Identifiable{
     }
     
     func xsmallSizeUrl() -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
         let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_small")
         if stringUrl.starts(with: "https:") {
             return stringUrl
@@ -32,6 +38,9 @@ struct FeaturedGame: Identifiable{
     }
     
     func smallSizeUrl() -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
         let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_small_2x")
         if stringUrl.starts(with: "https:") {
             return stringUrl
@@ -40,6 +49,9 @@ struct FeaturedGame: Identifiable{
     }
     
     func mediumSizeUrl() -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
         let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_big")
         if stringUrl.starts(with: "https:") {
             return stringUrl
@@ -48,6 +60,9 @@ struct FeaturedGame: Identifiable{
     }
     
     func bigSizeUrl() -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
         let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_big_2x")
         if stringUrl.starts(with: "https:") {
             return stringUrl

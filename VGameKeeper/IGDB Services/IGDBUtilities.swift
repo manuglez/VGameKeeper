@@ -43,5 +43,58 @@ pack    13
 update    14
  */
 class IGDBUtilities {
+    static func thumbnailUrl(_ imageUrl: String) -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
+        if imageUrl.starts(with: "https:") {
+            return imageUrl
+        }
+        return "https:\(imageUrl)"
+       
+    }
     
+    static func xsmallSizeUrl(_ imageUrl: String) -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
+        let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_small")
+        if stringUrl.starts(with: "https:") {
+            return stringUrl
+        }
+        return "https:\(stringUrl)"
+    }
+    
+    static func smallSizeUrl(_ imageUrl: String) -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
+        let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_small_2x")
+        if stringUrl.starts(with: "https:") {
+            return stringUrl
+        }
+        return "https:\(stringUrl)"
+    }
+    
+    static func mediumSizeUrl(_ imageUrl: String) -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
+        let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_big")
+        if stringUrl.starts(with: "https:") {
+            return stringUrl
+        }
+        return "https:\(stringUrl)"
+    }
+    
+    static func bigSizeUrl(_ imageUrl: String) -> String {
+        guard !imageUrl.isEmpty else {
+            return ""
+        }
+        let stringUrl = imageUrl.replacingOccurrences(of: "t_thumb", with: "t_cover_big_2x")
+        if stringUrl.starts(with: "https:") {
+            return stringUrl
+        }
+        return "https:\(stringUrl)"
+    }
 }

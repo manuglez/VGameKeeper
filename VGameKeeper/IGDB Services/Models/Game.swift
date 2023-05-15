@@ -14,7 +14,7 @@ struct Game: Codable {
     let firstReleaseDate: Int?
     let genres: [IGDB_Item]?
     let name: String
-    let releaseDates: [Int]
+    let releaseDates: [Int]?
     let summary: String?
     let totalRating: Double?
     let totalRatingCount: Int?

@@ -7,15 +7,80 @@
 
 import Foundation
 
-class GameDetailViewModel {
+enum DetailItemType{
+    case header
+    case textField
+    case textValue
+    case horizontalGrid
+    case multipleText
+}
+struct DetailModel {
+    var itemType: DetailItemType
+    var mainText: (String, String)? // Label, Value
+    var secondaryText: (String, String)? // Label, Value
+    var textSet: Set<String>?
+    var dataDictionary: [String: Any]?
+}
+
+class GameDetailViewModel: ViewModel {
     var gameInfo: GamePage?
+    var items: [DetailModel] = []
     
     func fetchGameFullInfo(gameID: Int, completion : @escaping () -> ()){
         Task {
             if let gameResponse = try await IGDBGameQuery.shared.singleGame(byId: gameID) {
                 gameInfo = seviceGameToAppGameInfo(serviceGameInfo: gameResponse)
+                buildModels()
             }
             completion()
+        }
+    }
+    
+    private func buildModels() {
+        items.removeAll()
+        
+        let headerItem = DetailModel(
+            itemType: .header,
+            mainText: ("Title", gameInfo?.name ?? "NO TILE"),
+            secondaryText: ("Cover Url", IGDBUtilities.bigSizeUrl(gameInfo?.coverUrl ?? ""))
+        )
+        items.append(headerItem)
+        
+        if let release = gameInfo?.firstRelease {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            formatter.timeStyle = .none
+            let dateText = formatter.string(from: release)
+            let seriesItem = DetailModel(
+                itemType: .textValue,
+                mainText: ("Lanzamiento inicial", dateText)
+            )
+            items.append(seriesItem)
+        }
+        
+        if let gameSeries = gameInfo?.collection,
+        gameSeries != ""{
+            let seriesItem = DetailModel(
+                itemType: .textValue,
+                mainText: ("Series", gameSeries) )
+            items.append(seriesItem)
+        }
+        
+        if let gameSummary = gameInfo?.summary,
+        gameSummary != ""{
+            let summaryItem = DetailModel(
+                itemType: .textField,
+                mainText: ("Resumen", gameSummary)
+            )
+            items.append(summaryItem)
+        }
+        
+        if let gameStoryline = gameInfo?.storyline,
+        gameStoryline != ""{
+            let storylineItem = DetailModel(
+                itemType: .textField,
+                mainText: ("Línea argumental", gameStoryline) )
+            items.append(storylineItem)
         }
     }
     

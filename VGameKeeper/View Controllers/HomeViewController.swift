@@ -56,6 +56,7 @@ class HomeViewController: UIViewController {
 
     @IBAction func barButtonSearchPressed(_ sender: Any) {
         print("barButtonSearchPressed")
+        performSegue(withIdentifier: "segueGridSearch", sender: self)
     }
 }
 
@@ -84,6 +85,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170.0
     }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return discoverViewModel.discoveries.count
@@ -95,7 +97,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
            let header = view as! UITableViewHeaderFooterView
-           header.textLabel?.textColor = UIColor.black
+           //header.textLabel?.textColor = UIColor.label
         header.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
     }
     

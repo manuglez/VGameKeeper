@@ -57,30 +57,14 @@ extension DiscoverTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath)
-        
-        guard let imageView = cell.viewWithTag(1) as? UIImageView else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? DiscoverCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        guard let cellLabel = cell.viewWithTag(2) as? UILabel else {
-            return UICollectionViewCell()
-        }
-        
-        //imageView.image = UIImage(named: imagesArray[indexPath.row])
         if let featuredGame = discoverModel?.gamesList[indexPath.row] {
-            guard featuredGame.imageUrl != "" else {
-                cellLabel.text = discoverModel?.gamesList[indexPath.row].name
-                return cell
-            }
-            if let url = URL(string: featuredGame.mediumSizeUrl()){
-                cellLabel.isHidden = true
-                imageView.fetch(fromURL: url)
-            } else {
-                cellLabel.text = discoverModel?.gamesList[indexPath.row].name
-            }
+            cell.featuredGame = featuredGame
         }
-        
+        cell.refreshData(renderingSize: .medium)
         return cell
     }
 }

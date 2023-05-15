@@ -16,6 +16,7 @@ enum Query_Endpoints: String {
     case screenshot = "screenshots"
 
 }
+
 class IGDBGameQuery {
     // Singleton global instance
     static let shared: IGDBGameQuery = IGDBGameQuery()
@@ -28,6 +29,24 @@ class IGDBGameQuery {
     
     private init() {
         
+    }
+    
+    func search(gameTitle: String) async throws -> GamesList {
+        let urlString = IGDBConstants.APIBaseUrl + Query_Endpoints.games.rawValue
+        //let filter = "where first_release_date < \(nowTimestamp) & themes != (42)"
+        //let requestBody = "fields \(GAME_FIELDS), \(RELEASE_FIELDS), \(PLATFORM_FIELDS); \(filter); \(sort); \(limit);"
+        let limit = "limit 20"
+        let requestBody = "search \"\(gameTitle)\"; fields \(GAME_FIELDS); \(limit);";
+       
+        let searchResult = try await makeRequest(withRawBody: requestBody, withUrlString: urlString, classToDecode: GamesList.self)
+        
+        if searchResult != nil {
+            for game in searchResult! {
+                print("Result: \(game.name) on \(game.firstReleaseDate ?? 0)")
+            }
+        }
+        
+        return searchResult ?? []
     }
     
     func recentReleases() async throws -> GamesList {

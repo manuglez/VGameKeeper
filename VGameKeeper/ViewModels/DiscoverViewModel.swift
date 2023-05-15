@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DiscoverViewModel {
+class DiscoverViewModel: ViewModel {
     var discoveries: [DiscoverModel] = []
     
     func fetchDiscoveries(completion : @escaping () -> ()) {
@@ -29,41 +29,5 @@ class DiscoverViewModel {
             }
             completion()
         }
-    }
-    
-    private func parseModelsGames(apiResult: GamesList, collectonName: String) -> DiscoverModel{
-        var viewModelItem = [FeaturedGame]()
-        for releaseItem in apiResult {
-            viewModelItem.append(modelToViewModelGames(model: releaseItem))
-        }
-        return DiscoverModel(sectionName: collectonName, gamesList: viewModelItem)
-    }
-    
-    private func modelToViewModelGames(model: Game) -> FeaturedGame {
-        let featured = FeaturedGame(
-                id: UUID(),
-                dbIdentifier: model.id,
-                name: model.name,
-                //platformName: model.platforms?.name ?? "NO PLATFORM",
-                imageUrl: model.cover?.url ?? "")
-        return featured
-    }
-    
-    private func parseModels(apiResult: [Release], collectonName: String) -> DiscoverModel{
-        var viewModelItem = [FeaturedGame]()
-        for releaseItem in apiResult {
-            viewModelItem.append(modelToViewModel(model: releaseItem))
-        }
-        return DiscoverModel(sectionName: collectonName, gamesList: viewModelItem)
-    }
-    
-    private func modelToViewModel(model: Release) -> FeaturedGame {
-        let featured = FeaturedGame(
-                id: UUID(),
-                dbIdentifier: model.id,
-                name: model.game.name,
-                //platformName: model.platform.name,
-                imageUrl: model.game.cover?.url ?? "")
-        return featured
     }
 }
