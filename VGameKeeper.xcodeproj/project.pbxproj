@@ -37,6 +37,11 @@
 		8D7CE8772A0A25E60096C330 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7CE8762A0A25E60096C330 /* DiscoverCollectionViewCell.swift */; };
 		8D7CE8792A0A2A2D0096C330 /* DiscoverCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7CE8782A0A2A2D0096C330 /* DiscoverCollectionView.swift */; };
 		8D7CE87C2A0A2EEF0096C330 /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7CE87B2A0A2EEF0096C330 /* DiscoverTableViewCell.swift */; };
+		8DA0EB642A15B4EF0004A9CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA0EB632A15B4EF0004A9CA /* GoogleService-Info.plist */; };
+		8DA0EB672A15B61B0004A9CA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8DA0EB662A15B61B0004A9CA /* FirebaseAnalytics */; };
+		8DA0EB692A15B61B0004A9CA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8DA0EB682A15B61B0004A9CA /* FirebaseAuth */; };
+		8DA0EB6B2A15B61B0004A9CA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8DA0EB6A2A15B61B0004A9CA /* FirebaseCrashlytics */; };
+		8DA0EB6D2A15B61B0004A9CA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8DA0EB6C2A15B61B0004A9CA /* FirebaseFirestore */; };
 		8DC0D6B82A0D821100BCF3C6 /* GameDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6B72A0D821100BCF3C6 /* GameDetailHeaderCell.swift */; };
 		8DC0D6BA2A0D822600BCF3C6 /* GameDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6B92A0D822600BCF3C6 /* GameDetailTextCell.swift */; };
 		8DC0D6BC2A0DF50300BCF3C6 /* GridSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6BB2A0DF50300BCF3C6 /* GridSearchViewController.swift */; };
@@ -79,6 +84,7 @@
 		8D7CE8762A0A25E60096C330 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D7CE8782A0A2A2D0096C330 /* DiscoverCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionView.swift; sourceTree = "<group>"; };
 		8D7CE87B2A0A2EEF0096C330 /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		8DA0EB632A15B4EF0004A9CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DC0D6B72A0D821100BCF3C6 /* GameDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailHeaderCell.swift; sourceTree = "<group>"; };
 		8DC0D6B92A0D822600BCF3C6 /* GameDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTextCell.swift; sourceTree = "<group>"; };
 		8DC0D6BB2A0DF50300BCF3C6 /* GridSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSearchViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA0EB6B2A15B61B0004A9CA /* FirebaseCrashlytics in Frameworks */,
+				8DA0EB6D2A15B61B0004A9CA /* FirebaseFirestore in Frameworks */,
+				8DA0EB672A15B61B0004A9CA /* FirebaseAnalytics in Frameworks */,
+				8DA0EB692A15B61B0004A9CA /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +140,7 @@
 				8D2340DD2A044579005A62A9 /* Assets.xcassets */,
 				8D2340DF2A044579005A62A9 /* LaunchScreen.storyboard */,
 				8D2340E22A044579005A62A9 /* Info.plist */,
+				8DA0EB632A15B4EF0004A9CA /* GoogleService-Info.plist */,
 				8D2340DA2A044578005A62A9 /* VGameKeeper.xcdatamodeld */,
 				8D74C6682A05D06400E76443 /* IGDB-info.plist */,
 			);
@@ -256,6 +267,12 @@
 			dependencies = (
 			);
 			name = VGameKeeper;
+			packageProductDependencies = (
+				8DA0EB662A15B61B0004A9CA /* FirebaseAnalytics */,
+				8DA0EB682A15B61B0004A9CA /* FirebaseAuth */,
+				8DA0EB6A2A15B61B0004A9CA /* FirebaseCrashlytics */,
+				8DA0EB6C2A15B61B0004A9CA /* FirebaseFirestore */,
+			);
 			productName = VGameKeeper;
 			productReference = 8D2340CE2A044578005A62A9 /* VGameKeeper.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +301,9 @@
 				Base,
 			);
 			mainGroup = 8D2340C52A044578005A62A9;
+			packageReferences = (
+				8DA0EB652A15B61B0004A9CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 8D2340CF2A044578005A62A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -300,6 +320,7 @@
 			files = (
 				8D74C6692A05D06400E76443 /* IGDB-info.plist in Resources */,
 				8D2340E12A044579005A62A9 /* LaunchScreen.storyboard in Resources */,
+				8DA0EB642A15B4EF0004A9CA /* GoogleService-Info.plist in Resources */,
 				8D2340DE2A044579005A62A9 /* Assets.xcassets in Resources */,
 				8D2340D92A044578005A62A9 /* Main.storyboard in Resources */,
 			);
@@ -562,6 +583,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8DA0EB652A15B61B0004A9CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8DA0EB662A15B61B0004A9CA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DA0EB652A15B61B0004A9CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8DA0EB682A15B61B0004A9CA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DA0EB652A15B61B0004A9CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8DA0EB6A2A15B61B0004A9CA /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DA0EB652A15B61B0004A9CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		8DA0EB6C2A15B61B0004A9CA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DA0EB652A15B61B0004A9CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8D2340DA2A044578005A62A9 /* VGameKeeper.xcdatamodeld */ = {

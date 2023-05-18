@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = .systemOrange
         UITabBar.appearance().unselectedItemTintColor = .systemFill
 
-
-
+        FirebaseApp.configure()
         IGDBManager.configure()
         return true
     }
