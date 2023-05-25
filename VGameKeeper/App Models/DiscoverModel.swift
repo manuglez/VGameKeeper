@@ -10,4 +10,5 @@ import Foundation
 struct DiscoverModel {
     var sectionName: String
     var gamesList: [FeaturedGame]
+    var reloadPending: Bool = false
 }
