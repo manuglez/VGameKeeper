@@ -1,8 +1,8 @@
 //
-//  DiscoverTableViewCell.swift
+//  HorizontalGridGameCell.swift
 //  VGameKeeper
 //
-//  Created by Manuel Gonzalez on 09/05/23.
+//  Created by Manuel Gonzalez on 20/05/23.
 //
 
 import UIKit
@@ -11,7 +11,9 @@ protocol FeaturedGamesGridDelegate: AnyObject {
     func gameSelectedFromGrid(itemIndex: Int, featuredGame: FeaturedGame)
 }
 
-class DiscoverTableViewCell: UITableViewCell {
+class HorizontalGridGameCell: UITableViewCell {
+    static let reuseIdentifier = "HorizontalGridGameCell"
+    
     var discoverModel: DiscoverModel?
     @IBOutlet weak var collectionView: DiscoverCollectionView!
     
@@ -22,6 +24,7 @@ class DiscoverTableViewCell: UITableViewCell {
         // Initialization code
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(UINib(nibName: "DiscoverCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: DiscoverCollectionViewCell.reuseIdentifier)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,10 +32,10 @@ class DiscoverTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
 
-extension DiscoverTableViewCell: UICollectionViewDelegateFlowLayout {
+extension HorizontalGridGameCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("collectionView didSelectItemAt \(indexPath.row)")
         
@@ -50,14 +53,14 @@ extension DiscoverTableViewCell: UICollectionViewDelegateFlowLayout {
 }
 
 
-extension DiscoverTableViewCell: UICollectionViewDataSource {
+extension HorizontalGridGameCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return discoverModel?.gamesList.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gameCell", for: indexPath) as? DiscoverCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCollectionViewCell.reuseIdentifier, for: indexPath) as? DiscoverCollectionViewCell else {
             return UICollectionViewCell()
         }
         
@@ -68,4 +71,3 @@ extension DiscoverTableViewCell: UICollectionViewDataSource {
         return cell
     }
 }
-

@@ -16,6 +16,7 @@ enum ImageRenderSize {
 }
 
 class DiscoverCollectionViewCell: UICollectionViewCell {
+    static let reuseIdentifier = "gameCell"
     var featuredGame: FeaturedGame?
     var gameImageView: UIImageView?
     var gameLabel: UILabel?

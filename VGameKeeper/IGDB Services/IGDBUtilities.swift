@@ -43,6 +43,14 @@ pack    13
 update    14
  */
 class IGDBUtilities {
+    static func itemArrayToStringArray(originalArray: [IGDB_Item]) -> [String] {
+        var stringArray: [String] = []
+        for item in originalArray {
+            stringArray.append(item.name)
+        }
+        return stringArray
+    }
+    
     static func thumbnailUrl(_ imageUrl: String) -> String {
         guard !imageUrl.isEmpty else {
             return ""

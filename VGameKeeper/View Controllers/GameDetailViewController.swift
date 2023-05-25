@@ -15,6 +15,8 @@ class GameDetailViewController: UIViewController{
     
     @IBOutlet weak var detailTableView: UITableView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +36,36 @@ class GameDetailViewController: UIViewController{
         }
         
     }
+    @IBAction func buttonAddToWishlistPressed(_ sender: Any) {
+    }
     
+    @IBAction func buttonAddToPlayingPressed(_ sender: Any) {
+    }
+    
+    @IBAction func buttonAddToListPressed(_ sender: Any) {
+        let listaColecciones = GameCollectionViewModel.getDefaultCollection
+        
+        showSheetAlert(
+            title: "Seleccione una colección a agregar el juego",
+            message: "Colecciones disponibles:",
+            buttonItems: listaColecciones) { selectedIndex in
+                print("Selected Index: \(selectedIndex)")
+                
+                if selectedIndex != -1 {
+                    guard let game = self.gameInfo else {
+                        return
+                    }
+                    
+                    let gameCollection = GameCollectionModel(
+                        index: selectedIndex,
+                        name: listaColecciones[selectedIndex]
+                    )
+                    self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
+                        
+                    }
+                }
+            }
+    }
     
     func updateData() {
         //textViewSummary.text = gameViewModel.gameInfo?.summary

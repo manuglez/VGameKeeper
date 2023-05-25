@@ -9,6 +9,7 @@ import Foundation
 import os.log
 
 class IGDBManager {
+    static let SESSION_UPDATE_NOTIFICATION = "SESSION_UPDATE_NOTIFICATION"
     private let logger = Logger()
     
     // Singleton global instance
@@ -37,6 +38,12 @@ class IGDBManager {
                 do {
                     let session = try await auth.retrieveNewToken()
                     shared.logger.debug("ℹ️ Session token received \(session)")
+                   
+                    let notifCenter = NotificationCenter.default
+                    let notifName = Notification.Name(SESSION_UPDATE_NOTIFICATION)
+                    let notif = Notification(name: notifName, userInfo: ["token":session])
+                    notifCenter.post(notif)
+                    
                 }catch IGDBAuthError.invalidGrantType(let msg) {
                     shared.logger.debug("🚨  IGDBAuthError.invalidGrantType Token Service error: \(msg)")
                 }catch IGDBAuthError.responseParseError(let msg) {

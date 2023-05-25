@@ -24,19 +24,39 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("ℹ ViewController didLoad()")
+        
+        tableView.register(UINib(nibName: "HorizontalGridGameCell", bundle: nil), forCellReuseIdentifier: HorizontalGridGameCell.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         
+        reloadData()
+    }
+    
+    func reloadData(includeFlags: Bool = false) {
         discoverViewModel.fetchDiscoveries {
             print("Discoveries fetched")
+            if includeFlags {
+                for i in 0...self.discoverViewModel.discoveries.count-1 {
+                    self.discoverViewModel.discoveries[i].reloadPending = true
+                }
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let notifCenter = NotificationCenter.default
         
-        
-        
+        notifCenter.addObserver(self, selector: #selector(sessionTokenUpdated), name: NSNotification.Name(IGDBManager.SESSION_UPDATE_NOTIFICATION), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let notifCenter = NotificationCenter.default
+        notifCenter.removeObserver(self, name: NSNotification.Name(IGDBManager.SESSION_UPDATE_NOTIFICATION), object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,6 +64,10 @@ class HomeViewController: UIViewController {
             let gameVC = segue.destination as! GameDetailViewController
             gameVC.gameInfo = selectedGame
         }
+    }
+    
+    @objc func sessionTokenUpdated(_ notification: Notification) {
+        reloadData(includeFlags: true)
     }
     
     /*func concurrencyTest() async {
@@ -102,7 +126,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let tableCell = tableView.dequeueReusableCell(withIdentifier: "discoverTableCell", for: indexPath) as? DiscoverTableViewCell {
+        if let tableCell = tableView.dequeueReusableCell(withIdentifier: HorizontalGridGameCell.reuseIdentifier, for: indexPath) as? HorizontalGridGameCell {
             tableCell.discoverModel = discoverViewModel.discoveries[indexPath.section]
             tableCell.featuredGameDelegate = self
             return tableCell
@@ -115,6 +139,14 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if discoverViewModel.discoveries[indexPath.section].reloadPending {
+            if let discoveryCell = cell as? HorizontalGridGameCell {
+                discoveryCell.collectionView.reloadData()
+            }
+            discoverViewModel.discoveries[indexPath.section].reloadPending = false
+        }
+    }
     
 }
 

@@ -141,7 +141,7 @@ class IGDBGameQuery {
         let responseData = try await request.performPostRequest(urlString: urlString, rawBody: requestBody)
         if let data = responseData {
             let responseString = String(data: data, encoding: .utf8)
-            print(responseString ?? "NO DATA")
+           // print(responseString ?? "NO DATA")
             do {
                 let decodedData = try JSONDecoder().decode(type, from: data)
                 //if let releases = releasesResult {

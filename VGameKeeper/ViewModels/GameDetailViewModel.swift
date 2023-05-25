@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseAuth
 
 enum DetailItemType{
     case header
@@ -22,10 +24,16 @@ struct DetailModel {
     var dataDictionary: [String: Any]?
 }
 
+struct GameCollectionModel {
+    var index: Int
+    var name: String
+}
+
 class GameDetailViewModel: ViewModel {
     var gameInfo: GamePage?
     var items: [DetailModel] = []
     
+    // MARK: Public Functions
     func fetchGameFullInfo(gameID: Int, completion : @escaping () -> ()){
         Task {
             if let gameResponse = try await IGDBGameQuery.shared.singleGame(byId: gameID) {
@@ -35,6 +43,41 @@ class GameDetailViewModel: ViewModel {
             completion()
         }
     }
+    
+    func addGameToCollection(game: FeaturedGame, gameCollection: GameCollectionModel, completion : @escaping () -> ()) {
+        Task {
+            //le db = Firestore.firestore()
+            //let ref = await db.collection("juegos").whereField("igdbID", isEqualTo: game.dbIdentifier).get
+            let fr = FirestoreService()
+            print("Searching for game \(game.name) (\(game.dbIdentifier))")
+            var gref = await fr.findGame(byExternalId: game.dbIdentifier)
+                
+            if gref == nil {
+                print("Creating new game Instance...")
+                gref = await fr.createGame(game: game)
+            } else {
+                print("Game Founded...")
+            }
+            
+            guard let gameRef = gref else{
+                print("Error creating game...")
+                completion()
+                return
+            }
+            
+            print("Saving to collection: \(gameCollection.name) (\(gameCollection.index))")
+            let success = await fr.addGameToCollection(gameReference: gameRef, gameCollection: gameCollection)
+            
+            if success {
+                print("Succes collection saving")
+            } else {
+                print("Error sacing collection")
+            }
+            completion()
+        }
+    }
+    
+    // MARK: Private Functions
     
     private func buildModels() {
         items.removeAll()
@@ -84,7 +127,7 @@ class GameDetailViewModel: ViewModel {
         }
     }
     
-    func seviceGameToAppGameInfo(serviceGameInfo: FullGame) -> GamePage {
+    private func seviceGameToAppGameInfo(serviceGameInfo: FullGame) -> GamePage {
         var game = GamePage()
         game.ageRatings = serviceGameInfo.ageRatings?.map{
             AgeRate_Game(rating: $0.rating, category: $0.category)
@@ -136,11 +179,5 @@ class GameDetailViewModel: ViewModel {
         return game
     }
     
-    func itemArrayToStringArray(originalArray: [IGDB_Item]) -> [String] {
-        var stringArray: [String] = []
-        for item in originalArray {
-            stringArray.append(item.name)
-        }
-        return stringArray
-    }
+    
 }
