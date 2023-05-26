@@ -98,6 +98,16 @@ class GameDetailViewModel: ViewModel {
         }
     }
     
+    func getCollectionIndex() -> Int {
+        let headerItem = items.first { $0.itemType == .header }
+        if let dataInfo = headerItem?.dataDictionary,
+           let gameCollection = dataInfo[DetailModel.DATA_HEADER_COLLECTION_KEY] as? GameCollectionModel{
+            return gameCollection.index
+        }
+        
+        return -1
+    }
+    
     // MARK: Private Functions
     
     private func buildModels() {

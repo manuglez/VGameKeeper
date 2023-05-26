@@ -21,17 +21,13 @@ class GameDetailViewController: UIViewController{
         detailTableView.dataSource = self
         detailTableView.delegate = self
        if let game = self.gameInfo {
-            /*labelGameTitle.text = game.name
-            if let url = URL(string: game.bigSizeUrl()){
-                coverImage.fetch(fromURL: url)
-            }*/
             gameViewModel.fetchGameFullInfo(
                 gameID: game.dbIdentifier) {
                    self.updateData()
                 }
         }
-        
     }
+    
     @IBAction func buttonAddToWishlistPressed(_ sender: Any) {
     }
     
@@ -42,7 +38,13 @@ class GameDetailViewController: UIViewController{
     }
     
     @IBAction func buttonAddToListPressed(_ sender: Any) {
-        let listaColecciones = GameCollectionViewModel.getDefaultCollection
+        var listaColecciones = GameCollectionViewModel.getDefaultCollection
+        let collectionIndex = gameViewModel.getCollectionIndex()
+        if collectionIndex != -1 {
+            var collectionName = listaColecciones[collectionIndex]
+            collectionName = "\u{2713} \(collectionName)"
+            listaColecciones[collectionIndex] = collectionName
+        }
         
         showSheetAlert(
             title: "Seleccione una colección a agregar el juego",
@@ -57,7 +59,7 @@ class GameDetailViewController: UIViewController{
                     
                     let gameCollection = GameCollectionModel(
                         index: selectedIndex,
-                        name: listaColecciones[selectedIndex]
+                        name: GameCollectionViewModel.getDefaultCollection[selectedIndex]
                     )
                     self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
                         self.detailTableView.reloadData()
