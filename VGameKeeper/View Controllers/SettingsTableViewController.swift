@@ -60,24 +60,47 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 3
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let _ = Auth.auth().currentUser {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "signoutCell", for: indexPath)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "signinCell", for: indexPath)
-            let registerButton: UIButton = cell.viewWithTag(2) as! UIButton
-            registerButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
-            
-            let loginButton: UIButton = cell.viewWithTag(1) as! UIButton
-            loginButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
-            
-            return cell
+        
+        let defaultCell = UITableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
+        let currentUser = Auth.auth().currentUser
+        
+        let name = currentUser?.uid ?? "No Current User"
+        let email = currentUser?.email ?? "No Current User"
+        
+        switch indexPath.row {
+        case 0:
+            var content = defaultCell.defaultContentConfiguration()
+            content.text = name
+            defaultCell.contentConfiguration = content
+            return defaultCell
+        case 1:
+            var content = defaultCell.defaultContentConfiguration()
+            content.text = email
+            defaultCell.contentConfiguration = content
+            return defaultCell
+        case 2:
+            if let _ = currentUser {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "signoutCell", for: indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "signinCell", for: indexPath)
+                let registerButton: UIButton = cell.viewWithTag(2) as! UIButton
+                registerButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
+                
+                let loginButton: UIButton = cell.viewWithTag(1) as! UIButton
+                loginButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
+                
+                return cell
+            }
+        default:
+            return defaultCell
         }
+        
         //return super.tableView(tableView, cellForRowAt: indexPath)
     }
 

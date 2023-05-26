@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import FirebaseFirestore
-import FirebaseAuth
+import FirebaseFirestore.FIRDocumentReference
 
 enum DetailItemType{
     case header
@@ -17,6 +16,7 @@ enum DetailItemType{
     case multipleText
 }
 struct DetailModel {
+    static let DATA_HEADER_COLLECTION_KEY = "collection"
     var itemType: DetailItemType
     var mainText: (String, String)? // Label, Value
     var secondaryText: (String, String)? // Label, Value
@@ -34,13 +34,19 @@ class GameDetailViewModel: ViewModel {
     var items: [DetailModel] = []
     
     // MARK: Public Functions
+    
     func fetchGameFullInfo(gameID: Int, completion : @escaping () -> ()){
         Task {
             if let gameResponse = try await IGDBGameQuery.shared.singleGame(byId: gameID) {
                 gameInfo = seviceGameToAppGameInfo(serviceGameInfo: gameResponse)
                 buildModels()
             }
-            completion()
+            
+            try await searchFirestoreCollections(gameID: gameID)
+            
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
     
@@ -66,14 +72,29 @@ class GameDetailViewModel: ViewModel {
             }
             
             print("Saving to collection: \(gameCollection.name) (\(gameCollection.index))")
-            let success = await fr.addGameToCollection(gameReference: gameRef, gameCollection: gameCollection)
+            let collectionReference = await fr.addGameToCollection(gameReference: gameRef, gameCollection: gameCollection)
             
-            if success {
+            if collectionReference != nil {
+                try await buildCollectionModel(gameRef: gameRef)
                 print("Succes collection saving")
             } else {
                 print("Error sacing collection")
             }
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
+            
+        }
+    }
+    
+    func removeGameFromCollection(game: FeaturedGame, completion : @escaping () -> ()) {
+        Task {
+            let db = FirestoreService()
+            try await db.removeGameFromCollection(gameID: game.dbIdentifier)
+            removeCollectionFromViewModel()
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
     
@@ -85,7 +106,8 @@ class GameDetailViewModel: ViewModel {
         let headerItem = DetailModel(
             itemType: .header,
             mainText: ("Title", gameInfo?.name ?? "NO TILE"),
-            secondaryText: ("Cover Url", IGDBUtilities.bigSizeUrl(gameInfo?.coverUrl ?? ""))
+            secondaryText: ("Cover Url", IGDBUtilities.bigSizeUrl(gameInfo?.coverUrl ?? "")),
+            dataDictionary: ["cover_url" : gameInfo?.coverUrl ?? ""]
         )
         items.append(headerItem)
         
@@ -124,6 +146,42 @@ class GameDetailViewModel: ViewModel {
                 itemType: .textField,
                 mainText: ("Línea argumental", gameStoryline) )
             items.append(storylineItem)
+        }
+    }
+    
+    private func searchFirestoreCollections(gameID: Int) async throws {
+        let fr = FirestoreService()
+        if let gameRef = await fr.findGame(byExternalId: gameID) {
+            try await buildCollectionModel(gameRef: gameRef)
+        }
+    }
+    
+    private func removeCollectionFromViewModel(){
+        let headerItem = items.first { $0.itemType == .header }
+        let headerIndex = items.firstIndex { $0.itemType == .header }
+        
+        guard var dataInfo = headerItem?.dataDictionary else {
+            return
+        }
+        
+        dataInfo[DetailModel.DATA_HEADER_COLLECTION_KEY] = nil
+        items[headerIndex!].dataDictionary = dataInfo
+    }
+    
+    private func buildCollectionModel(gameRef: DocumentReference) async throws  {
+        let fr = FirestoreService()
+        if let collectionInfo = try await fr.queryCollectionInfo(gameReference: gameRef){
+            print("Game In a Collection")
+            let collectionModel: GameCollectionModel = GameCollectionModel(
+                index: collectionInfo["category"] as! Int  , name: collectionInfo["name"] as! String)
+            let headerItem = items.first { $0.itemType == .header }
+            let headerIndex = items.firstIndex { $0.itemType == .header }
+            var dataInfo = headerItem?.dataDictionary
+            if dataInfo == nil {
+                dataInfo = [:]
+            }
+            dataInfo?[DetailModel.DATA_HEADER_COLLECTION_KEY] = collectionModel
+            items[headerIndex!].dataDictionary = dataInfo
         }
     }
     

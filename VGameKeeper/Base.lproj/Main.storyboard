@@ -405,19 +405,6 @@
                                                         <constraint firstAttribute="width" constant="140" id="mVx-qf-tK0"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRM-iO-fpJ">
-                                                    <rect key="frame" x="180" y="67" width="171.33333333333337" height="34.333333333333343"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Lista de deseos" cornerStyle="large">
-                                                        <imageReference key="image" image="plus.square.on.square" catalog="system" renderingMode="original"/>
-                                                        <color key="baseForegroundColor" systemColor="systemIndigoColor"/>
-                                                        <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
-                                                    </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="bnAddPressed:" destination="bUp-YG-hpK" eventType="touchUpInside" id="feg-Th-Lcf"/>
-                                                        <action selector="buttonAddToWishlistPressed:" destination="HYl-b2-KXY" eventType="touchUpInside" id="qu2-NG-eR6"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[GAME TITLE]" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnY-XF-4XG">
                                                     <rect key="frame" x="20" y="274" width="353" height="32"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -425,9 +412,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-B6-Qbf">
-                                                    <rect key="frame" x="180" y="164.33333333333334" width="112.66666666666669" height="35"/>
+                                                    <rect key="frame" x="180" y="67" width="203" height="35"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Agregar" cornerStyle="large">
+                                                    <buttonConfiguration key="configuration" style="filled" title="Agregar a colección" cornerStyle="large">
                                                         <imageReference key="image" image="plus.square.on.square" catalog="system" renderingMode="original"/>
                                                         <color key="baseForegroundColor" systemColor="systemIndigoColor"/>
                                                         <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
@@ -437,40 +424,83 @@
                                                         <action selector="buttonAddToListPressed:" destination="HYl-b2-KXY" eventType="touchUpInside" id="YZ2-15-O4U"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJN-GA-1vc">
-                                                    <rect key="frame" x="180" y="115.33333333333331" width="119" height="35"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRM-iO-fpJ">
+                                                    <rect key="frame" x="180" y="116" width="181.33333333333337" height="35"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Jugando" cornerStyle="large">
+                                                    <buttonConfiguration key="configuration" style="filled" title="A lista de deseos" cornerStyle="large">
                                                         <imageReference key="image" image="plus.square.on.square" catalog="system" renderingMode="original"/>
                                                         <color key="baseForegroundColor" systemColor="systemIndigoColor"/>
                                                         <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="bnAddPressed:" destination="bUp-YG-hpK" eventType="touchUpInside" id="ay2-rq-fj7"/>
-                                                        <action selector="buttonAddToPlayingPressed:" destination="HYl-b2-KXY" eventType="touchUpInside" id="q2z-6M-oFh"/>
+                                                        <action selector="bnAddPressed:" destination="bUp-YG-hpK" eventType="touchUpInside" id="feg-Th-Lcf"/>
+                                                        <action selector="buttonAddToWishlistPressed:" destination="HYl-b2-KXY" eventType="touchUpInside" id="qu2-NG-eR6"/>
                                                     </connections>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbQ-3V-lnq">
+                                                    <rect key="frame" x="180" y="176" width="203" height="35"/>
+                                                    <subviews>
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbC-Ug-2Ec">
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="35"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="filled" cornerStyle="large">
+                                                                <imageReference key="image" image="gamecontroller" catalog="system" symbolScale="medium"/>
+                                                                <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                                <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                                            </buttonConfiguration>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="T7J-WE-UWJ">
+                                                            <rect key="frame" x="168" y="0.0" width="34.999999999999986" height="35"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="35" id="SyG-Yh-MKK"/>
+                                                                <constraint firstAttribute="width" secondItem="T7J-WE-UWJ" secondAttribute="height" multiplier="1:1" id="zdN-1M-zC7"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="filled" cornerStyle="large">
+                                                                <imageReference key="image" image="minus.circle" catalog="system" symbolScale="medium"/>
+                                                                <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                                <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="buttonRemoveFromCollectionPressed:" destination="HYl-b2-KXY" eventType="touchUpInside" id="HJ6-aL-IK9"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="T7J-WE-UWJ" firstAttribute="top" secondItem="bbQ-3V-lnq" secondAttribute="top" id="Ead-4g-Ta8"/>
+                                                        <constraint firstItem="RbC-Ug-2Ec" firstAttribute="leading" secondItem="bbQ-3V-lnq" secondAttribute="leading" id="IGu-9B-RpP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="T7J-WE-UWJ" secondAttribute="trailing" id="SwN-sh-7Z0"/>
+                                                        <constraint firstAttribute="bottom" secondItem="T7J-WE-UWJ" secondAttribute="bottom" id="TWl-G4-fzM"/>
+                                                        <constraint firstItem="RbC-Ug-2Ec" firstAttribute="top" secondItem="bbQ-3V-lnq" secondAttribute="top" id="jwC-90-S2f"/>
+                                                        <constraint firstItem="T7J-WE-UWJ" firstAttribute="leading" secondItem="RbC-Ug-2Ec" secondAttribute="trailing" constant="8" id="o8i-lf-7pQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RbC-Ug-2Ec" secondAttribute="bottom" id="sBx-o8-UWO"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="gS6-bD-pld" secondAttribute="trailing" id="0Il-aR-O9d"/>
                                                 <constraint firstItem="vMp-Jt-BfN" firstAttribute="top" secondItem="gS6-bD-pld" secondAttribute="bottom" constant="-154" id="0LE-d4-TK4"/>
                                                 <constraint firstItem="4Tu-dZ-sSu" firstAttribute="bottom" secondItem="gS6-bD-pld" secondAttribute="bottom" id="0aS-aS-FkF"/>
+                                                <constraint firstItem="aRM-iO-fpJ" firstAttribute="top" secondItem="EGr-B6-Qbf" secondAttribute="bottom" constant="14" id="2A4-Cz-E1R"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aRM-iO-fpJ" secondAttribute="trailing" constant="10" id="3xv-GK-OuQ"/>
+                                                <constraint firstItem="EGr-B6-Qbf" firstAttribute="top" secondItem="vMp-Jt-BfN" secondAttribute="top" id="49v-uZ-t6P"/>
+                                                <constraint firstAttribute="trailing" secondItem="bbQ-3V-lnq" secondAttribute="trailing" constant="10" id="87d-fn-Z9v"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EGr-B6-Qbf" secondAttribute="trailing" constant="10" id="8gW-OX-CIU"/>
+                                                <constraint firstItem="aRM-iO-fpJ" firstAttribute="leading" secondItem="EGr-B6-Qbf" secondAttribute="leading" id="9xs-a7-5gJ"/>
+                                                <constraint firstItem="bbQ-3V-lnq" firstAttribute="leading" secondItem="vMp-Jt-BfN" secondAttribute="trailing" constant="20" id="Alb-sz-wv4"/>
                                                 <constraint firstItem="qnY-XF-4XG" firstAttribute="trailing" secondItem="7cj-HB-gWx" secondAttribute="trailingMargin" id="CpV-iM-7EW"/>
-                                                <constraint firstItem="EGr-B6-Qbf" firstAttribute="leading" secondItem="YJN-GA-1vc" secondAttribute="leading" id="EEd-E4-I55"/>
-                                                <constraint firstItem="YJN-GA-1vc" firstAttribute="top" secondItem="aRM-iO-fpJ" secondAttribute="bottom" constant="14" id="Ett-63-tqw"/>
+                                                <constraint firstItem="EGr-B6-Qbf" firstAttribute="leading" secondItem="vMp-Jt-BfN" secondAttribute="trailing" constant="20" id="DmA-zV-2hw"/>
                                                 <constraint firstItem="qnY-XF-4XG" firstAttribute="leading" secondItem="7cj-HB-gWx" secondAttribute="leadingMargin" id="FbQ-1s-5BF"/>
-                                                <constraint firstItem="aRM-iO-fpJ" firstAttribute="top" secondItem="vMp-Jt-BfN" secondAttribute="top" id="HLU-gk-hCr"/>
                                                 <constraint firstItem="4Tu-dZ-sSu" firstAttribute="leading" secondItem="gS6-bD-pld" secondAttribute="leading" id="JV4-SF-KMi"/>
                                                 <constraint firstItem="vMp-Jt-BfN" firstAttribute="leading" secondItem="7cj-HB-gWx" secondAttribute="leadingMargin" id="Mgt-Mg-00H"/>
                                                 <constraint firstItem="gS6-bD-pld" firstAttribute="top" secondItem="7cj-HB-gWx" secondAttribute="top" id="Obd-Xy-4wt"/>
+                                                <constraint firstItem="bbQ-3V-lnq" firstAttribute="bottom" secondItem="gS6-bD-pld" secondAttribute="bottom" constant="-10" id="Rba-mB-dX4"/>
                                                 <constraint firstItem="4Tu-dZ-sSu" firstAttribute="top" secondItem="gS6-bD-pld" secondAttribute="top" id="Uxz-gr-Pck"/>
-                                                <constraint firstItem="EGr-B6-Qbf" firstAttribute="top" secondItem="YJN-GA-1vc" secondAttribute="bottom" constant="14" id="Yxe-Lk-Ppw"/>
                                                 <constraint firstItem="4Tu-dZ-sSu" firstAttribute="trailing" secondItem="gS6-bD-pld" secondAttribute="trailing" id="Z2b-iD-1ch"/>
-                                                <constraint firstItem="YJN-GA-1vc" firstAttribute="leading" secondItem="aRM-iO-fpJ" secondAttribute="leading" id="c5p-d6-2ll"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qnY-XF-4XG" secondAttribute="bottom" id="iqg-o2-Pn4"/>
                                                 <constraint firstItem="qnY-XF-4XG" firstAttribute="top" secondItem="vMp-Jt-BfN" secondAttribute="bottom" constant="25" id="jIp-EV-Dad"/>
-                                                <constraint firstItem="aRM-iO-fpJ" firstAttribute="leading" secondItem="vMp-Jt-BfN" secondAttribute="trailing" constant="20" id="vKc-NV-8XP"/>
                                                 <constraint firstItem="gS6-bD-pld" firstAttribute="leading" secondItem="7cj-HB-gWx" secondAttribute="leading" id="yVX-e7-lc4"/>
                                             </constraints>
                                             <variation key="default">
@@ -480,6 +510,11 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonAddCollection" destination="EGr-B6-Qbf" id="7pW-FB-gCX"/>
+                                            <outlet property="buttonAddToWishlist" destination="aRM-iO-fpJ" id="OMh-jC-MQm"/>
+                                            <outlet property="gameCollactionIndicator" destination="RbC-Ug-2Ec" id="Cnr-PT-nzR"/>
+                                            <outlet property="gameCollectionContainer" destination="bbQ-3V-lnq" id="dpb-i0-Whp"/>
+                                            <outlet property="gameCollectionRemoveButton" destination="T7J-WE-UWJ" id="102-Tp-Q3P"/>
                                             <outlet property="imageGameCover" destination="vMp-Jt-BfN" id="AGE-K5-UQz"/>
                                             <outlet property="imageHeaderBg" destination="gS6-bD-pld" id="ewm-KX-90g"/>
                                             <outlet property="labelGameTitle" destination="qnY-XF-4XG" id="EbQ-Ty-MSO"/>
@@ -543,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rj4-Oq-WTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3862" y="-10"/>
+            <point key="canvasLocation" x="3861.8320610687019" y="-10.563380281690142"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vnq-RN-8Dl">
@@ -575,14 +610,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signoutCell" id="wWN-h7-Cuu">
-                                <rect key="frame" x="0.0" y="50" width="393" height="53.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="54.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWN-h7-Cuu" id="9tM-dz-zkz">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="53.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldq-dk-taF">
-                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="33.666666666666664"/>
+                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="34.333333333333336"/>
                                             <color key="tintColor" systemColor="systemRedColor"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Cerrar sesión">
@@ -601,14 +636,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signinCell" id="MBd-Fo-3QA">
-                                <rect key="frame" x="0.0" y="103.66666793823242" width="393" height="55.333332061767578"/>
+                                <rect key="frame" x="0.0" y="104.33333206176758" width="393" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MBd-Fo-3QA" id="uzX-Rm-H7X">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-h8-Tmh">
-                                            <rect key="frame" x="217" y="10" width="111" height="35.333333333333336"/>
+                                            <rect key="frame" x="217" y="10" width="111" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Registrarse">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -616,7 +651,7 @@
                                             </buttonConfiguration>
                                         </button>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxp-Mj-dBU">
-                                            <rect key="frame" x="54" y="10" width="123" height="35.333333333333336"/>
+                                            <rect key="frame" x="54" y="10" width="123" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Iniciar sesión">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -664,6 +699,7 @@
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="minus.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="114"/>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="98"/>
         <image name="plus.square.on.square" catalog="system" width="128" height="116"/>
@@ -675,6 +711,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

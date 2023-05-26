@@ -15,8 +15,6 @@ class GameDetailViewController: UIViewController{
     
     @IBOutlet weak var detailTableView: UITableView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,9 +27,7 @@ class GameDetailViewController: UIViewController{
             }*/
             gameViewModel.fetchGameFullInfo(
                 gameID: game.dbIdentifier) {
-                    DispatchQueue.main.async {
-                        self.updateData()
-                    }
+                   self.updateData()
                 }
         }
         
@@ -39,7 +35,10 @@ class GameDetailViewController: UIViewController{
     @IBAction func buttonAddToWishlistPressed(_ sender: Any) {
     }
     
-    @IBAction func buttonAddToPlayingPressed(_ sender: Any) {
+    @IBAction func buttonRemoveFromCollectionPressed(_ sender: Any) {
+        gameViewModel.removeGameFromCollection(game: gameInfo!) {
+            self.updateData()
+        }
     }
     
     @IBAction func buttonAddToListPressed(_ sender: Any) {
@@ -61,7 +60,7 @@ class GameDetailViewController: UIViewController{
                         name: listaColecciones[selectedIndex]
                     )
                     self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
-                        
+                        self.detailTableView.reloadData()
                     }
                 }
             }
@@ -96,7 +95,6 @@ extension GameDetailViewController: UITableViewDataSource {
         case .header:
             let cell = tableView.dequeueReusableCell(withIdentifier: "gameDetailHeaderCell", for: indexPath) as! GameDetailHeaderCell
             cell.itemModel = gameViewModel.items[indexPath.row]
-            cell.refreshData()
             return cell
         case .textValue:
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
@@ -110,7 +108,6 @@ extension GameDetailViewController: UITableViewDataSource {
         case .textField:
             let cell = tableView.dequeueReusableCell(withIdentifier: "gameDetailTextCell", for: indexPath) as! GameDetailTextCell
             cell.itemModel = gameViewModel.items[indexPath.row]
-            cell.refreshData()
             return cell
         default:
             let cell = UITableViewCell(style: .default, reuseIdentifier: "cellIdentifier")

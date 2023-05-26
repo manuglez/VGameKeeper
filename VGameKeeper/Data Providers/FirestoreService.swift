@@ -86,7 +86,7 @@ class FirestoreService {
         return nil
     }
     
-    func queryCollectionReference(gameReference gameRef: DocumentReference, gameCollection: GameCollectionModel) async throws -> DocumentReference?{
+    func queryCollectionReference(gameReference gameRef: DocumentReference) async throws -> DocumentReference?{
         let collectionSnapshot = try await db.collection(Firestore_Colecctions.coleccion.rawValue)
             .whereField("juego", isEqualTo: gameRef)
             .whereField("usuario", isEqualTo: userReference)
@@ -95,7 +95,25 @@ class FirestoreService {
         return collectionSnapshot.documents.first?.reference
     }
     
-    func addGameToCollection(gameReference gameRef: DocumentReference, gameCollection: GameCollectionModel) async -> Bool{
+    func queryCollectionInfo(gameReference gameRef: DocumentReference) async throws -> [String : Any]?{
+        guard let collectionReference = try await queryCollectionReference(gameReference: gameRef) else {
+            return nil
+        }
+        
+        let snapCollection = try await collectionReference.getDocument()
+        let colName = snapCollection.get("nombre") as? String
+        let colCat = snapCollection.get("categoria") as? Int
+        if let name = colName, let categoria = colCat {
+            print("\(categoria) \(name)")
+            let collInfo: [String : Any]  = ["name": name,
+                            "category": categoria]
+            return collInfo
+        }
+        
+        return nil
+    }
+    
+    func addGameToCollection(gameReference gameRef: DocumentReference, gameCollection: GameCollectionModel) async -> DocumentReference?{
         let colleccionData: [String: Any] = [
             "categoria": gameCollection.index,
             //"juego": db.document("juegos/\(gameRef.documentID)"),
@@ -107,10 +125,10 @@ class FirestoreService {
         
         do {
             print("Queryng collection...")
-            if let collRef = try await queryCollectionReference(gameReference: gameRef, gameCollection: gameCollection) {
+            if let collRef = try await queryCollectionReference(gameReference: gameRef) {
                 print("Existing reference. Updating data...")
                 try await collRef.updateData(colleccionData)
-                return true
+                return collRef
             } else {
                 print("Creating new entry to collection...")
                 let r = try await registerNewItem(collectionName: .coleccion, data: colleccionData)
@@ -120,11 +138,26 @@ class FirestoreService {
                 } else {
                     print("registry failed")
                 }
-                return true
+                return r
             }
         } catch (let err){
             print("Error saving collection document: \(err)")
-            return false
+            return nil
         }
+    }
+    
+    func removeGameFromCollection(gameID: Int) async throws {
+        if let gameRef = await findGame(byExternalId: gameID){
+            try await removeGameFromCollection(gameReference: gameRef)
+        }
+    }
+    func removeGameFromCollection(gameReference: DocumentReference) async throws {
+        let collectionsReference = db.collection(Firestore_Colecctions.coleccion.rawValue)
+        if let queryCollection = try await collectionsReference
+            .whereField("juego", isEqualTo: gameReference)
+            .whereField("usuario", isEqualTo: userReference).getDocuments().documents.first{
+            try await collectionsReference.document(queryCollection.documentID).delete()
+        }
+        
     }
 }

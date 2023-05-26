@@ -9,15 +9,17 @@ import UIKit
 
 class GameDetailTextCell: UITableViewCell {
 
-    var itemModel: DetailModel?
+    var itemModel: DetailModel?{
+        didSet{
+            refreshData()
+        }
+    }
 
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        refreshData()
+        // Initialization code        
     }
     
     

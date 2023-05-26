@@ -25,11 +25,11 @@ class GameCollectionViewModel {
 }
 
 enum CollectionCategory: Int {
-    case jugando = 1
-    case pendiente = 2
-    case enLaMira = 3
-    case enPausa = 4
-    case terminado = 5
+    case jugando = 0
+    case pendiente = 1
+    case enLaMira = 2
+    case enPausa = 3
+    case terminado = 4
 }
 
 struct GameCollectionItem {
