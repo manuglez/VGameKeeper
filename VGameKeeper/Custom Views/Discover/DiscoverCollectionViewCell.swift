@@ -17,7 +17,13 @@ enum ImageRenderSize {
 
 class DiscoverCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "gameCell"
-    var featuredGame: FeaturedGame?
+    var featuredGame: FeaturedGame? {
+        didSet {
+            refreshData(renderingSize: currentImageSize)
+        }
+    }
+    
+    var currentImageSize: ImageRenderSize = .small
     var gameImageView: UIImageView?
     var gameLabel: UILabel?
     
@@ -36,7 +42,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
         
         gameLabel = cellLabel
-        refreshData(renderingSize: .small)
+        //refreshData(renderingSize: .small)
     }
     
     func refreshData(renderingSize: ImageRenderSize){

@@ -95,6 +95,35 @@ class FirestoreService {
         return collectionSnapshot.documents.first?.reference
     }
     
+    func queryUserCollections() async throws -> Array<[String: Any]>{
+        var collections: [[String: Any]] = []
+        let collectionSnapshot = try await db.collection(Firestore_Colecctions.coleccion.rawValue)
+            .whereField("usuario", isEqualTo: userReference)
+            .getDocuments()
+        
+        for document in collectionSnapshot.documents {
+            var collectionItem: [String: Any] = [:]
+            //print("--->")
+            //print("\(document.documentID) => \(document.data())")
+            collectionItem["categoria"] = (document.get("categoria") as? Int) ?? -1
+            collectionItem["colleccion"] = document.get("nombre") as? String ?? "NONAME"
+            let gameRef = document.get("juego") as? DocumentReference
+            
+            var gameData: [String : Any] = [:]
+            if let gameDoc = try await gameRef?.getDocument(){
+                gameData["externalID"] = gameDoc.get("igdbID") as? Int ?? 0
+                gameData["cover-url"] = gameDoc.get("imagenUrl") as? String ?? ""
+                gameData["nombre"] = gameDoc.get("nombre") as? String ?? ""
+                collectionItem["juego"] = gameData
+            }
+            
+            collections.append(collectionItem)
+        }
+        
+        return collections
+    }
+    
+    
     func queryCollectionInfo(gameReference gameRef: DocumentReference) async throws -> [String : Any]?{
         guard let collectionReference = try await queryCollectionReference(gameReference: gameRef) else {
             return nil

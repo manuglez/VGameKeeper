@@ -55,6 +55,7 @@
 		8DC0D6BF2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6BE2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift */; };
 		8DD4B2F52A1D490C0071907E /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD4B2F42A1D490C0071907E /* FirestoreService.swift */; };
 		8DD902992A17F5C5009A4FC4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */; };
+		8DDA0B072A291FF2004E81B7 /* AppDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA0B062A291FF2004E81B7 /* AppDefaultsWrapper.swift */; };
 		8DE938852A08E1F6000920C0 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE938842A08E1F5000920C0 /* DiscoverViewModel.swift */; };
 		8DE9388A2A08E2A2000920C0 /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE938892A08E2A2000920C0 /* DiscoverModel.swift */; };
 		8DE9388C2A08E344000920C0 /* FeaturedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9388B2A08E344000920C0 /* FeaturedGame.swift */; };
@@ -107,6 +108,7 @@
 		8DC0D6BE2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchReusableView.swift; sourceTree = "<group>"; };
 		8DD4B2F42A1D490C0071907E /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		8DDA0B062A291FF2004E81B7 /* AppDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultsWrapper.swift; sourceTree = "<group>"; };
 		8DE938842A08E1F5000920C0 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		8DE938892A08E2A2000920C0 /* DiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
 		8DE9388B2A08E344000920C0 /* FeaturedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedGame.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				8DD4B2F42A1D490C0071907E /* FirestoreService.swift */,
+				8DDA0B062A291FF2004E81B7 /* AppDefaultsWrapper.swift */,
 			);
 			path = "Data Providers";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				8D7CE8772A0A25E60096C330 /* DiscoverCollectionViewCell.swift in Sources */,
 				8D28A7032A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift in Sources */,
 				8DE9388A2A08E2A2000920C0 /* DiscoverModel.swift in Sources */,
+				8DDA0B072A291FF2004E81B7 /* AppDefaultsWrapper.swift in Sources */,
 				8DD902992A17F5C5009A4FC4 /* SettingsTableViewController.swift in Sources */,
 				8DC0D6BC2A0DF50300BCF3C6 /* GridSearchViewController.swift in Sources */,
 				8D74C66B2A061DCD00E76443 /* IGDBGameQuery.swift in Sources */,

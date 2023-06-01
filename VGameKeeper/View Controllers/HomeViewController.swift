@@ -88,17 +88,7 @@ extension HomeViewController: FeaturedGamesGridDelegate {
     func gameSelectedFromGrid(itemIndex: Int, featuredGame: FeaturedGame) {
         selectedGame = featuredGame
         self.performSegue(withIdentifier: "segueGameDetail", sender: self)
-        /*showSimpleAlert(
-            title: "gameSelectedFromGrid",
-            message: "Index: \(itemIndex) element ID: \(featuredGame.dbIdentifier) Game: \(featuredGame.name)")
-         */
     }
-    
-    func gameSelectedFromGrid(itemIndex: Int, elemendId: Int) {
-        
-    }
-    
-    
 }
 
 extension HomeViewController: UITableViewDataSource {

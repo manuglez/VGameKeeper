@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collections-->
+        <!--Mis Colecciones-->
         <scene sceneID="OHP-Nh-Dvl">
             <objects>
                 <viewController id="ljk-5j-hwo" customClass="GameCollectionsViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,8 +18,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-ea-nMy">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se requiere registrarse o iniciar sesión para acceder a tu colección de juegos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBx-0Q-CH9">
+                                        <rect key="frame" x="45" y="282.66666666666669" width="303" height="40.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6B5-v7-ma8">
+                                        <rect key="frame" x="61.666666666666657" y="353" width="270" height="35"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnr-v2-bpe">
+                                                <rect key="frame" x="159" y="0.0" width="111" height="35"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="Registrarse">
+                                                    <color key="baseForegroundColor" name="appMainTint"/>
+                                                    <color key="baseBackgroundColor" name="appMainTint"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="buttonRegisterPressed:" destination="ljk-5j-hwo" eventType="touchUpInside" id="Vv1-VX-Sgh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk3-be-10l">
+                                                <rect key="frame" x="0.0" y="0.0" width="123" height="35"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="Iniciar sesión">
+                                                    <color key="baseForegroundColor" name="appMainTint"/>
+                                                    <color key="baseBackgroundColor" name="appMainTint"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="buttonLoginPressed:" destination="ljk-5j-hwo" eventType="touchUpInside" id="x8l-Ki-ALv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="xnr-v2-bpe" firstAttribute="leading" secondItem="pk3-be-10l" secondAttribute="trailing" constant="36" id="DXe-LS-YKo"/>
+                                            <constraint firstItem="pk3-be-10l" firstAttribute="top" secondItem="6B5-v7-ma8" secondAttribute="top" id="En0-eD-gUJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="pk3-be-10l" secondAttribute="bottom" id="J7R-Qj-gwc"/>
+                                            <constraint firstAttribute="bottom" secondItem="xnr-v2-bpe" secondAttribute="bottom" id="RJ3-cc-8hj"/>
+                                            <constraint firstItem="xnr-v2-bpe" firstAttribute="top" secondItem="6B5-v7-ma8" secondAttribute="top" id="V7c-IZ-rtR"/>
+                                            <constraint firstAttribute="trailing" secondItem="xnr-v2-bpe" secondAttribute="trailing" id="cEb-Z8-1ly"/>
+                                            <constraint firstItem="pk3-be-10l" firstAttribute="leading" secondItem="6B5-v7-ma8" secondAttribute="leading" id="pKk-jH-dR6"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jI7-3i-U8u">
+                                        <rect key="frame" x="135" y="111.33333333333331" width="121.66666666666669" height="119"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="opa-Lt-GoW"/>
+                                            <constraint firstAttribute="height" constant="120" id="uub-Hd-gHv"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zBx-0Q-CH9" secondAttribute="trailing" constant="45" id="6wr-xm-huX"/>
+                                    <constraint firstItem="jI7-3i-U8u" firstAttribute="centerX" secondItem="iVE-ea-nMy" secondAttribute="centerX" id="WEd-mm-55K"/>
+                                    <constraint firstItem="zBx-0Q-CH9" firstAttribute="centerY" secondItem="iVE-ea-nMy" secondAttribute="centerY" constant="-30" id="cgT-Th-ybw"/>
+                                    <constraint firstItem="6B5-v7-ma8" firstAttribute="top" secondItem="zBx-0Q-CH9" secondAttribute="bottom" constant="29.666666666666629" id="dWg-bX-8GE"/>
+                                    <constraint firstItem="zBx-0Q-CH9" firstAttribute="top" secondItem="jI7-3i-U8u" secondAttribute="bottom" constant="52" id="hur-Vs-Dbv"/>
+                                    <constraint firstItem="zBx-0Q-CH9" firstAttribute="leading" secondItem="iVE-ea-nMy" secondAttribute="leading" constant="45" id="lAX-uK-j5b"/>
+                                    <constraint firstItem="6B5-v7-ma8" firstAttribute="centerX" secondItem="zBx-0Q-CH9" secondAttribute="centerX" id="nm3-AJ-bl2"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qxs-zl-QD3">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CollectionSectionCell" rowHeight="62" id="1QO-XW-JoD" customClass="GameCollectionSectionCell" customModule="VGameKeeper" customModuleProvider="target">
@@ -58,71 +123,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-ea-nMy">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se requiere registrarse o iniciar sesión para acceder a tu colección de juegos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBx-0Q-CH9">
-                                        <rect key="frame" x="45" y="304.66666666666669" width="303" height="40.666666666666686"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6B5-v7-ma8">
-                                        <rect key="frame" x="61.666666666666657" y="375" width="270" height="35"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnr-v2-bpe">
-                                                <rect key="frame" x="159" y="0.0" width="111" height="35"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Registrarse">
-                                                    <color key="baseForegroundColor" name="appMainTint"/>
-                                                    <color key="baseBackgroundColor" name="appMainTint"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="buttonRegisterPressed:" destination="ljk-5j-hwo" eventType="touchUpInside" id="Vv1-VX-Sgh"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk3-be-10l">
-                                                <rect key="frame" x="0.0" y="0.0" width="123" height="35"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Iniciar sesión">
-                                                    <color key="baseForegroundColor" name="appMainTint"/>
-                                                    <color key="baseBackgroundColor" name="appMainTint"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="buttonLoginPressed:" destination="ljk-5j-hwo" eventType="touchUpInside" id="x8l-Ki-ALv"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="xnr-v2-bpe" firstAttribute="leading" secondItem="pk3-be-10l" secondAttribute="trailing" constant="36" id="DXe-LS-YKo"/>
-                                            <constraint firstItem="pk3-be-10l" firstAttribute="top" secondItem="6B5-v7-ma8" secondAttribute="top" id="En0-eD-gUJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="pk3-be-10l" secondAttribute="bottom" id="J7R-Qj-gwc"/>
-                                            <constraint firstAttribute="bottom" secondItem="xnr-v2-bpe" secondAttribute="bottom" id="RJ3-cc-8hj"/>
-                                            <constraint firstItem="xnr-v2-bpe" firstAttribute="top" secondItem="6B5-v7-ma8" secondAttribute="top" id="V7c-IZ-rtR"/>
-                                            <constraint firstAttribute="trailing" secondItem="xnr-v2-bpe" secondAttribute="trailing" id="cEb-Z8-1ly"/>
-                                            <constraint firstItem="pk3-be-10l" firstAttribute="leading" secondItem="6B5-v7-ma8" secondAttribute="leading" id="pKk-jH-dR6"/>
-                                        </constraints>
-                                    </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.badge.xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jI7-3i-U8u">
-                                        <rect key="frame" x="135" y="133.33333333333331" width="121.66666666666669" height="119"/>
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="opa-Lt-GoW"/>
-                                            <constraint firstAttribute="height" constant="120" id="uub-Hd-gHv"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="zBx-0Q-CH9" secondAttribute="trailing" constant="45" id="6wr-xm-huX"/>
-                                    <constraint firstItem="jI7-3i-U8u" firstAttribute="centerX" secondItem="iVE-ea-nMy" secondAttribute="centerX" id="WEd-mm-55K"/>
-                                    <constraint firstItem="zBx-0Q-CH9" firstAttribute="centerY" secondItem="iVE-ea-nMy" secondAttribute="centerY" constant="-30" id="cgT-Th-ybw"/>
-                                    <constraint firstItem="6B5-v7-ma8" firstAttribute="top" secondItem="zBx-0Q-CH9" secondAttribute="bottom" constant="29.666666666666629" id="dWg-bX-8GE"/>
-                                    <constraint firstItem="zBx-0Q-CH9" firstAttribute="top" secondItem="jI7-3i-U8u" secondAttribute="bottom" constant="52" id="hur-Vs-Dbv"/>
-                                    <constraint firstItem="zBx-0Q-CH9" firstAttribute="leading" secondItem="iVE-ea-nMy" secondAttribute="leading" constant="45" id="lAX-uK-j5b"/>
-                                    <constraint firstItem="6B5-v7-ma8" firstAttribute="centerX" secondItem="zBx-0Q-CH9" secondAttribute="centerX" id="nm3-AJ-bl2"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BUj-qC-J81"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -137,18 +137,19 @@
                             <constraint firstItem="BUj-qC-J81" firstAttribute="bottom" secondItem="qxs-zl-QD3" secondAttribute="bottom" id="ucn-uG-af4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Collections" image="gamecontroller" catalog="system" id="LiR-2n-pCT"/>
+                    <navigationItem key="navigationItem" title="Mis Colecciones" id="Nyh-aF-pWm"/>
                     <connections>
                         <outlet property="noUserView" destination="iVE-ea-nMy" id="nZw-rA-qY0"/>
                         <outlet property="tableView" destination="qxs-zl-QD3" id="kNx-tI-C7T"/>
                         <segue destination="Nzl-or-evO" kind="popoverPresentation" identifier="segueRegister" popoverAnchorView="xnr-v2-bpe" id="eqr-Lj-0RY">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="HYl-b2-KXY" kind="show" identifier="segueGameDetail" id="Amx-QH-5Qj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-1l-iH9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3074" y="310"/>
+            <point key="canvasLocation" x="3364" y="335"/>
         </scene>
         <!--User Register View Controller-->
         <scene sceneID="Gp5-0W-nQK">
@@ -210,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpA-vw-3F7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4756.4885496183206" y="669.71830985915494"/>
+            <point key="canvasLocation" x="4279" y="844"/>
         </scene>
         <!--Home-->
         <scene sceneID="8Yf-3o-Enz">
@@ -333,7 +334,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="MiY-uk-a2q" kind="relationship" relationship="viewControllers" id="Kjf-R5-AYt"/>
-                        <segue destination="ljk-5j-hwo" kind="relationship" relationship="viewControllers" id="dan-VZ-zno"/>
+                        <segue destination="d6N-vi-8B5" kind="relationship" relationship="viewControllers" id="dan-VZ-zno"/>
                         <segue destination="Y6n-4y-7KR" kind="relationship" relationship="viewControllers" id="9nM-Tt-GGS"/>
                     </connections>
                 </tabBarController>
@@ -578,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rj4-Oq-WTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861.8320610687019" y="-10.563380281690142"/>
+            <point key="canvasLocation" x="4279" y="-3"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vnq-RN-8Dl">
@@ -610,14 +611,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signoutCell" id="wWN-h7-Cuu">
-                                <rect key="frame" x="0.0" y="50" width="393" height="54.333332061767578"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="53.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWN-h7-Cuu" id="9tM-dz-zkz">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="53.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldq-dk-taF">
-                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="34.333333333333336"/>
+                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="33.666666666666664"/>
                                             <color key="tintColor" systemColor="systemRedColor"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Cerrar sesión">
@@ -636,14 +637,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signinCell" id="MBd-Fo-3QA">
-                                <rect key="frame" x="0.0" y="104.33333206176758" width="393" height="55"/>
+                                <rect key="frame" x="0.0" y="103.66666793823242" width="393" height="55.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MBd-Fo-3QA" id="uzX-Rm-H7X">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-h8-Tmh">
-                                            <rect key="frame" x="217" y="10" width="111" height="35"/>
+                                            <rect key="frame" x="217" y="10" width="111" height="35.333333333333336"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Registrarse">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -651,7 +652,7 @@
                                             </buttonConfiguration>
                                         </button>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxp-Mj-dBU">
-                                            <rect key="frame" x="54" y="10" width="123" height="35"/>
+                                            <rect key="frame" x="54" y="10" width="123" height="35.333333333333336"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Iniciar sesión">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -688,10 +689,29 @@
             </objects>
             <point key="canvasLocation" x="2608" y="973"/>
         </scene>
+        <!--Collections-->
+        <scene sceneID="HTV-Ma-rOt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d6N-vi-8B5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Collections" image="gamecontroller" catalog="system" id="LiR-2n-pCT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vFs-Ye-Gc4">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ljk-5j-hwo" kind="relationship" relationship="rootViewController" id="k2q-EG-apv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FRQ-JN-Soq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2640" y="335"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NDM-p7-YBo"/>
-        <segue reference="gbA-Lu-77p"/>
+        <segue reference="Amx-QH-5Qj"/>
+        <segue reference="eqr-Lj-0RY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>

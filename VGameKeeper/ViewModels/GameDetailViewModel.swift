@@ -55,14 +55,10 @@ class GameDetailViewModel: ViewModel {
             //le db = Firestore.firestore()
             //let ref = await db.collection("juegos").whereField("igdbID", isEqualTo: game.dbIdentifier).get
             let fr = FirestoreService()
-            print("Searching for game \(game.name) (\(game.dbIdentifier))")
             var gref = await fr.findGame(byExternalId: game.dbIdentifier)
                 
             if gref == nil {
-                print("Creating new game Instance...")
                 gref = await fr.createGame(game: game)
-            } else {
-                print("Game Founded...")
             }
             
             guard let gameRef = gref else{
@@ -71,14 +67,12 @@ class GameDetailViewModel: ViewModel {
                 return
             }
             
-            print("Saving to collection: \(gameCollection.name) (\(gameCollection.index))")
             let collectionReference = await fr.addGameToCollection(gameReference: gameRef, gameCollection: gameCollection)
             
             if collectionReference != nil {
                 try await buildCollectionModel(gameRef: gameRef)
-                print("Succes collection saving")
             } else {
-                print("Error sacing collection")
+                print("Error saving collection")
             }
             DispatchQueue.main.async {
                 completion()
@@ -181,17 +175,20 @@ class GameDetailViewModel: ViewModel {
     private func buildCollectionModel(gameRef: DocumentReference) async throws  {
         let fr = FirestoreService()
         if let collectionInfo = try await fr.queryCollectionInfo(gameReference: gameRef){
-            print("Game In a Collection")
             let collectionModel: GameCollectionModel = GameCollectionModel(
                 index: collectionInfo["category"] as! Int  , name: collectionInfo["name"] as! String)
-            let headerItem = items.first { $0.itemType == .header }
-            let headerIndex = items.firstIndex { $0.itemType == .header }
-            var dataInfo = headerItem?.dataDictionary
+            let resultIndex = items.firstIndex { $0.itemType == .header }
+            guard let headerIndex = resultIndex else {
+                return
+            }
+            let headerItem = items[headerIndex]
+           
+            var dataInfo = headerItem.dataDictionary
             if dataInfo == nil {
                 dataInfo = [:]
             }
             dataInfo?[DetailModel.DATA_HEADER_COLLECTION_KEY] = collectionModel
-            items[headerIndex!].dataDictionary = dataInfo
+            items[headerIndex].dataDictionary = dataInfo
         }
     }
     

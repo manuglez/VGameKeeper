@@ -13,8 +13,13 @@ protocol FeaturedGamesGridDelegate: AnyObject {
 
 class HorizontalGridGameCell: UITableViewCell {
     static let reuseIdentifier = "HorizontalGridGameCell"
+    static let defaultRowHeight = 170.0
     
-    var discoverModel: DiscoverModel?
+    var discoverModel: DiscoverModel? {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
     @IBOutlet weak var collectionView: DiscoverCollectionView!
     
     weak var featuredGameDelegate: FeaturedGamesGridDelegate?
@@ -65,9 +70,10 @@ extension HorizontalGridGameCell: UICollectionViewDataSource {
         }
         
         if let featuredGame = discoverModel?.gamesList[indexPath.row] {
+            cell.currentImageSize = .medium
             cell.featuredGame = featuredGame
         }
-        cell.refreshData(renderingSize: .medium)
+
         return cell
     }
 }

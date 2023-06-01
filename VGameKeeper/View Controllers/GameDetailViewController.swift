@@ -29,10 +29,12 @@ class GameDetailViewController: UIViewController{
     }
     
     @IBAction func buttonAddToWishlistPressed(_ sender: Any) {
+        addGameToCollection(collectionCategory: 2)
     }
     
     @IBAction func buttonRemoveFromCollectionPressed(_ sender: Any) {
         gameViewModel.removeGameFromCollection(game: gameInfo!) {
+            AppDefaultsWrapper.shared.collectionsReload = true
             self.updateData()
         }
     }
@@ -53,19 +55,25 @@ class GameDetailViewController: UIViewController{
                 print("Selected Index: \(selectedIndex)")
                 
                 if selectedIndex != -1 {
-                    guard let game = self.gameInfo else {
-                        return
-                    }
                     
-                    let gameCollection = GameCollectionModel(
-                        index: selectedIndex,
-                        name: GameCollectionViewModel.getDefaultCollection[selectedIndex]
-                    )
-                    self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
-                        self.detailTableView.reloadData()
-                    }
+                    self.addGameToCollection(collectionCategory: selectedIndex)
                 }
             }
+    }
+    
+    func addGameToCollection(collectionCategory: Int){
+        guard let game = self.gameInfo else {
+            return
+        }
+        
+        let gameCollection = GameCollectionModel(
+            index: collectionCategory,
+            name: GameCollectionViewModel.getDefaultCollection[collectionCategory]
+        )
+        self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
+            AppDefaultsWrapper.shared.collectionsReload = true
+            self.detailTableView.reloadData()
+        }
     }
     
     func updateData() {
