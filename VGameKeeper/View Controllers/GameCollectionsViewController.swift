@@ -170,9 +170,15 @@ extension GameCollectionsViewController: UITableViewDataSource {
         return gameCollectionViewModel.gameLists.count * 2
     }
     
-   /* func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        <#code#>
-    }*/
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row % 2 == 1 {
+            let itemIndex: Int = indexPath.row / 2
+            let isOpen = gameCollectionViewModel.gameLists[itemIndex].isOpen
+            return isOpen ? UITableView.automaticDimension : 0.0
+        }
+        
+        return UITableView.automaticDimension//(self as GameCollectionsViewController).superclass.tableView(tableView, heightForRowAt: indexPath)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -181,8 +187,11 @@ extension GameCollectionsViewController: UITableViewDataSource {
                 return newSimpleCell(labelText: "NO CELL CONFIGURATION")
             }
             let itemIndex: Int = indexPath.row / 2
-            cell.sectionTitle = gameCollectionViewModel.gameLists[itemIndex].name.rawValue
-            cell.fillContents()
+            let viewModelItem = gameCollectionViewModel.gameLists[itemIndex]
+            cell.sectionTitle = viewModelItem.name.rawValue
+            cell.sectionCategory = viewModelItem.category.rawValue
+            cell.isOpen = viewModelItem.isOpen
+
             return cell
         } else {
             let itemIndex: Int = (indexPath.row / 2)
@@ -227,7 +236,12 @@ extension GameCollectionsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.row % 2 == 0 {
+            let itemIndex: Int = indexPath.row / 2
+            let isOpen = gameCollectionViewModel.gameLists[itemIndex].isOpen
+            gameCollectionViewModel.gameLists[itemIndex].isOpen = !isOpen
+            tableView.reloadData()
+        }
     }
 }
 

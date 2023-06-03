@@ -30,7 +30,7 @@ struct GameCollectionItem {
     var gameCollection: [FeaturedGame] = []
 }
 
-class GameCollectionViewModel {
+class GameCollectionViewModel: ViewModel {
     var gameLists = [GameCollectionItem]()
     private static let defaultSections: [(CollectionCategoryIndex, CollectionCategoryName)] = [
         (CollectionCategoryIndex.jugando, CollectionCategoryName.jugando),
@@ -40,7 +40,8 @@ class GameCollectionViewModel {
         (CollectionCategoryIndex.terminado, CollectionCategoryName.terminado)
     ]
     
-    init() {
+    override init() {
+        super.init()
         var index = 0
         for sectionItem in GameCollectionViewModel.defaultSections {
             let gameCollectionItem = GameCollectionItem(

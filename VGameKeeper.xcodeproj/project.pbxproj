@@ -23,6 +23,7 @@
 		8D28A7092A0B2A6D00C3D7C3 /* GamePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A7082A0B2A6D00C3D7C3 /* GamePage.swift */; };
 		8D28A70B2A0B4D4F00C3D7C3 /* IGDBUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */; };
 		8D28A70D2A0B4ED600C3D7C3 /* FullGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */; };
+		8D2A58262A2A88C300952B03 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A58252A2A88C300952B03 /* Utils.swift */; };
 		8D6F760F2A0EBF2700015A1C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */; };
 		8D6F76112A0EC42300015A1C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F76102A0EC42300015A1C /* ViewModel.swift */; };
 		8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */; };
@@ -80,6 +81,7 @@
 		8D28A7082A0B2A6D00C3D7C3 /* GamePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePage.swift; sourceTree = "<group>"; };
 		8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBUtilities.swift; sourceTree = "<group>"; };
 		8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGame.swift; sourceTree = "<group>"; };
+		8D2A58252A2A88C300952B03 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
 		8D6F76102A0EC42300015A1C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBAuth.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		8D2340D02A044578005A62A9 /* VGameKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				8D2A58242A2A88A200952B03 /* Utilites */,
 				8DD4B2F32A1D42270071907E /* Data Providers */,
 				8D7CE8752A0A25720096C330 /* Custom Views */,
 				8D7CE8722A09C7F20096C330 /* Extensions */,
@@ -167,6 +170,14 @@
 				8D74C6682A05D06400E76443 /* IGDB-info.plist */,
 			);
 			path = VGameKeeper;
+			sourceTree = "<group>";
+		};
+		8D2A58242A2A88A200952B03 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				8D2A58252A2A88C300952B03 /* Utils.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 		8D74C65E2A05904400E76443 /* IGDB Services */ = {
@@ -397,6 +408,7 @@
 				8D28A70B2A0B4D4F00C3D7C3 /* IGDBUtilities.swift in Sources */,
 				8D2340D62A044578005A62A9 /* HomeViewController.swift in Sources */,
 				8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */,
+				8D2A58262A2A88C300952B03 /* Utils.swift in Sources */,
 				8D7CE8712A09AF130096C330 /* Cover.swift in Sources */,
 				8D7CE8792A0A2A2D0096C330 /* DiscoverCollectionView.swift in Sources */,
 				8DD4B2F52A1D490C0071907E /* FirestoreService.swift in Sources */,

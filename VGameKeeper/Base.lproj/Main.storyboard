@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V1g-YN-RZy">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -94,29 +94,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-wa-zNc">
-                                                    <rect key="frame" x="20" y="10" width="80" height="42"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GBl-NM-Z8S">
-                                                    <rect key="frame" x="107.66666666666667" y="26.333333333333336" width="20.333333333333329" height="10.333333333333336"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7xl-he-4ut">
+                                                    <rect key="frame" x="20" y="16.333333333333332" width="28" height="29.333333333333339"/>
+                                                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="7xl-he-4ut" secondAttribute="height" multiplier="1:1" id="R8b-Mt-3X8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GBl-NM-Z8S">
+                                                    <rect key="frame" x="163" y="23" width="24.000000000000014" height="18.333333333333339"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="GBl-NM-Z8S" secondAttribute="height" multiplier="1:1" id="Gne-mN-xbV"/>
                                                     </constraints>
+                                                    <imageReference key="image" image="chevron.down" catalog="system" symbolScale="large" variableValue="0.0"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-wa-zNc">
+                                                    <rect key="frame" x="56" y="10" width="80" height="42"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZAS-wa-zNc" firstAttribute="leading" secondItem="x6m-33-1QA" secondAttribute="leading" constant="20" symbolic="YES" id="A1O-1I-YNR"/>
+                                                <constraint firstItem="7xl-he-4ut" firstAttribute="centerY" secondItem="x6m-33-1QA" secondAttribute="centerY" id="8ra-03-1ba"/>
                                                 <constraint firstItem="GBl-NM-Z8S" firstAttribute="centerY" secondItem="ZAS-wa-zNc" secondAttribute="centerY" id="Bny-30-3My"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZAS-wa-zNc" secondAttribute="bottom" constant="10" id="N9I-RW-Eyk"/>
+                                                <constraint firstItem="ZAS-wa-zNc" firstAttribute="leading" secondItem="7xl-he-4ut" secondAttribute="trailing" constant="8" symbolic="YES" id="VdK-uI-zBh"/>
                                                 <constraint firstItem="ZAS-wa-zNc" firstAttribute="top" secondItem="x6m-33-1QA" secondAttribute="top" constant="10" id="a2R-Wk-Yfa"/>
                                                 <constraint firstItem="GBl-NM-Z8S" firstAttribute="leading" secondItem="ZAS-wa-zNc" secondAttribute="trailing" constant="7.6666666666666572" id="dVU-hq-MY9"/>
+                                                <constraint firstItem="7xl-he-4ut" firstAttribute="height" secondItem="ZAS-wa-zNc" secondAttribute="height" multiplier="0.666667" id="fWy-OU-s0q"/>
+                                                <constraint firstItem="7xl-he-4ut" firstAttribute="leading" secondItem="x6m-33-1QA" secondAttribute="leadingMargin" id="iKf-Nw-9g8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="categoryImage" destination="7xl-he-4ut" id="MuQ-3g-Zf4"/>
                                             <outlet property="imageAccessory" destination="GBl-NM-Z8S" id="f80-9A-xzd"/>
                                             <outlet property="labelSectionTitle" destination="ZAS-wa-zNc" id="c2I-oB-ht2"/>
                                         </connections>
@@ -137,7 +150,12 @@
                             <constraint firstItem="BUj-qC-J81" firstAttribute="bottom" secondItem="qxs-zl-QD3" secondAttribute="bottom" id="ucn-uG-af4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Mis Colecciones" id="Nyh-aF-pWm"/>
+                    <navigationItem key="navigationItem" title="Mis Colecciones" id="Nyh-aF-pWm">
+                        <rightBarButtonItems>
+                            <barButtonItem image="square.grid.3x3.fill" catalog="system" id="zSH-xa-fhA"/>
+                            <barButtonItem image="square.grid.3x1.below.line.grid.1x2.fill" catalog="system" id="Cbe-QI-bo6"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="noUserView" destination="iVE-ea-nMy" id="nZw-rA-qY0"/>
                         <outlet property="tableView" destination="qxs-zl-QD3" id="kNx-tI-C7T"/>
@@ -149,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-1l-iH9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3364" y="335"/>
+            <point key="canvasLocation" x="3362.5954198473282" y="334.50704225352115"/>
         </scene>
         <!--User Register View Controller-->
         <scene sceneID="Gp5-0W-nQK">
@@ -698,6 +716,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vFs-Ye-Gc4">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -714,6 +733,7 @@
         <segue reference="eqr-Lj-0RY"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="checkmark.seal.fill" catalog="system" width="128" height="124"/>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="game_detail_preview" width="320" height="180"/>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
@@ -723,6 +743,8 @@
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="114"/>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="98"/>
         <image name="plus.square.on.square" catalog="system" width="128" height="116"/>
+        <image name="square.grid.3x1.below.line.grid.1x2.fill" catalog="system" width="128" height="114"/>
+        <image name="square.grid.3x3.fill" catalog="system" width="128" height="113"/>
         <namedColor name="appMainTint">
             <color red="0.81470764579999999" green="0.47098668710000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

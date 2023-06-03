@@ -16,13 +16,7 @@ class GameDetailHeaderCell: UITableViewCell {
         }
     }
     
-    let COLLECTION_ICON_TITLES = [
-        "gamecontroller",
-        "hourglass",
-        "eye",
-        "pause.fill",
-        "checkmark.seal"
-    ]
+    
     
     @IBOutlet weak var imageHeaderBg: UIImageView!
     @IBOutlet weak var imageGameCover: UIImageView!
