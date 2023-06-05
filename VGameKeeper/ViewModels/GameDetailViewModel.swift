@@ -33,6 +33,7 @@ class GameDetailViewModel: ViewModel {
     var gameInfo: GamePage?
     var items: [DetailModel] = []
     
+    let cd_context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // MARK: Public Functions
     
     func fetchGameFullInfo(gameID: Int, completion : @escaping () -> ()){
@@ -52,28 +53,44 @@ class GameDetailViewModel: ViewModel {
     
     func addGameToCollection(game: FeaturedGame, gameCollection: GameCollectionModel, completion : @escaping () -> ()) {
         Task {
+            let coredata = CoreDataService.shared
+            let fr = FirestoreService()
+            
+            // Search game ID in core Data
+            if let savedGame = coredata.game(withExternalID: game.dbIdentifier){
+                // Update collection info in Core data
+                coredata.updateGame(game: savedGame, collectionCategory: gameCollection.index)
+                // Save Info to Firestore
+               let _ = await fr.addGameToCollection(documentID: savedGame.firestoreDocumentID!, gameCollection: gameCollection)
+            } else {
+                // Search game ID in Firestore
+                var gref = await fr.findGame(byExternalId: game.dbIdentifier)
+                    
+                if gref == nil {
+                    gref = await fr.createGame(game: game)
+                }
+                
+                guard let gameRef = gref else{
+                    print("Error creating game...")
+                    completion()
+                    return
+                }
+                
+                // Save Collection in Core Data
+                let docID = gref?.documentID ?? ""
+                coredata.createGame(documentID: docID, name: game.name, imageUrl: game.imageUrl, externalID: game.dbIdentifier, collectionCategory: gameCollection.index)
+                
+                // Add Game to Collection to Firestore
+                let _ = await fr.addGameToCollection(gameReference: gameRef, gameCollection: gameCollection)
+                
+                
+            }
+            
+            try await updateViewModelHeader(collectionModel: gameCollection)
             //le db = Firestore.firestore()
             //let ref = await db.collection("juegos").whereField("igdbID", isEqualTo: game.dbIdentifier).get
-            let fr = FirestoreService()
-            var gref = await fr.findGame(byExternalId: game.dbIdentifier)
-                
-            if gref == nil {
-                gref = await fr.createGame(game: game)
-            }
             
-            guard let gameRef = gref else{
-                print("Error creating game...")
-                completion()
-                return
-            }
             
-            let collectionReference = await fr.addGameToCollection(gameReference: gameRef, gameCollection: gameCollection)
-            
-            if collectionReference != nil {
-                try await buildCollectionModel(gameRef: gameRef)
-            } else {
-                print("Error saving collection")
-            }
             DispatchQueue.main.async {
                 completion()
             }
@@ -81,10 +98,21 @@ class GameDetailViewModel: ViewModel {
         }
     }
     
+    /*func saveCollectionToFirestore(collectionReference: DocumentReference?) async{
+        if collectionReference != nil {
+            try await buildCollectionModel(gameRef: gameRef)
+        } else {
+            print("Error saving collection")
+        }
+    }*/
+    
     func removeGameFromCollection(game: FeaturedGame, completion : @escaping () -> ()) {
         Task {
             let db = FirestoreService()
             try await db.removeGameFromCollection(gameID: game.dbIdentifier)
+            let coredata = CoreDataService.shared
+            let deleted = coredata.deletegGame(withExternalID: game.dbIdentifier)
+            print("game Deleted: \(game.name) -> (\(deleted))")
             removeCollectionFromViewModel()
             DispatchQueue.main.async {
                 completion()
@@ -153,7 +181,7 @@ class GameDetailViewModel: ViewModel {
         }
     }
     
-    private func searchFirestoreCollections(gameID: Int) async throws {
+   private func searchFirestoreCollections(gameID: Int) async throws {
         let fr = FirestoreService()
         if let gameRef = await fr.findGame(byExternalId: gameID) {
             try await buildCollectionModel(gameRef: gameRef)
@@ -172,11 +200,21 @@ class GameDetailViewModel: ViewModel {
         items[headerIndex!].dataDictionary = dataInfo
     }
     
-    private func buildCollectionModel(gameRef: DocumentReference) async throws  {
+    
+    private func buildCollectionModel(gameRef: DocumentReference) async throws {
         let fr = FirestoreService()
         if let collectionInfo = try await fr.queryCollectionInfo(gameReference: gameRef){
             let collectionModel: GameCollectionModel = GameCollectionModel(
                 index: collectionInfo["category"] as! Int  , name: collectionInfo["name"] as! String)
+            try await updateViewModelHeader(collectionModel: collectionModel)
+        }
+    }
+    
+    private func updateViewModelHeader(collectionModel: GameCollectionModel) async throws  {
+        /*let fr = FirestoreService()
+        if let collectionInfo = try await fr.queryCollectionInfo(gameReference: gameRef){
+            let collectionModel: GameCollectionModel = GameCollectionModel(
+                index: collectionInfo["category"] as! Int  , name: collectionInfo["name"] as! String)*/
             let resultIndex = items.firstIndex { $0.itemType == .header }
             guard let headerIndex = resultIndex else {
                 return
@@ -189,7 +227,7 @@ class GameDetailViewModel: ViewModel {
             }
             dataInfo?[DetailModel.DATA_HEADER_COLLECTION_KEY] = collectionModel
             items[headerIndex].dataDictionary = dataInfo
-        }
+       // }
     }
     
     private func seviceGameToAppGameInfo(serviceGameInfo: FullGame) -> GamePage {

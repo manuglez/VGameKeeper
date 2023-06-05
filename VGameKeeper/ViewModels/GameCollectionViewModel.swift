@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CollectionCategoryIndex: Int {
     case jugando = 0
@@ -40,6 +41,8 @@ class GameCollectionViewModel: ViewModel {
         (CollectionCategoryIndex.terminado, CollectionCategoryName.terminado)
     ]
     
+    private let cd_context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override init() {
         super.init()
         var index = 0
@@ -60,35 +63,68 @@ class GameCollectionViewModel: ViewModel {
         }
     }
     
-    func fetchCollections(completion : @escaping () -> ()) {
-        Task {
-            clearCollections()
-            let firestore = FirestoreService()
-            let data = try await firestore.queryUserCollections()
-            for collectionItem in data {
+    func fetchFromCoredata() -> Bool {//[FeaturedGame]{
+        do {
+            
+            let cd_gamesList = try cd_context.fetch(CD_Game.fetchRequest())
+            
+            buildViewModel(gameDataList: cd_gamesList)
+            
+            return cd_gamesList.count > 0
+        } catch {
+            
+        }
+        
+        return false
+    }
+    
+    func fetchFromFirestore() async{
+        let firestore = FirestoreService()
+        do {
+            let firestoreData = try await firestore.queryUserCollections()
+            let coredata = CoreDataService.shared
+            var cd_gamesList: [CD_Game] = []
+            for collectionItem in firestoreData {
                 let gameCategory = collectionItem["categoria"] as? Int ?? -1
                 if gameCategory != -1 {
-                    let categoryIndex = gameLists.firstIndex(where: { $0.category.rawValue == gameCategory })
-                    if let catIndex = categoryIndex {
-                        var categoryModel = gameLists[catIndex]
-                        let gameData: [String: Any] = collectionItem["juego"] as! [String : Any]
-                        let featuredGame = FeaturedGame(
-                            id: UUID(),
-                            dbIdentifier: gameData["externalID"] as? Int ?? 0,
-                            name: gameData["nombre"] as? String ?? "",
-                            imageUrl: gameData["cover-url"] as? String ?? "")
                         
-                        categoryModel.gameCollection.append(featuredGame)
-                        gameLists[catIndex] = categoryModel
-                        
-                    } /*else {
-                        categoryModel = GameCollectionItem(
-                            name: CollectionCategoryName(rawValue: categoryName)!,
-                            category: CollectionCategoryIndex(rawValue: gameCategory)!
-                        )
-                    }*/
+                    let gameData: [String: Any] = collectionItem["juego"] as! [String : Any]
+                    let gameID = UUID()
+                    let gameName = gameData["nombre"] as? String ?? ""
+                    let gameExternalID = gameData["externalID"] as? Int ?? 0
+                    let gameImageUrl = gameData["cover-url"] as? String ?? ""
+                    let document_id = gameData["docid"] as? String ?? ""
+                    
+                    let cd_item = coredata.createGame(
+                        documentID: document_id,
+                        name: gameName,
+                        imageUrl: gameImageUrl,
+                        externalID: gameExternalID,
+                        collectionCategory: gameCategory
+                    )
+                    if cd_item != nil {
+                        cd_gamesList.append(cd_item!)
+                    }
                     
                 }
+            }
+            
+            buildViewModel(gameDataList: cd_gamesList)
+            
+        }catch (let err){
+            print("Error fetching Firestore Collections \(err.localizedDescription)")
+        }
+    }
+    
+    func fetchCollections(completion : @escaping () -> ()) {
+        Task {
+            clearViewModelCollections()
+            if AppDefaultsWrapper.shared.collectionsReload {
+                CoreDataService.shared.clearGamesData()
+               await fetchFromFirestore()
+               AppDefaultsWrapper.shared.collectionsReload = false
+            }else {
+                let _ = fetchFromCoredata()
             }
             
             DispatchQueue.main.async {
@@ -97,7 +133,27 @@ class GameCollectionViewModel: ViewModel {
         }
     }
     
-    func clearCollections() {
+    private func buildViewModel(gameDataList: [CD_Game]){
+        for gameData in gameDataList {
+            let gameCategory = Int(gameData.collectionCategory)
+            let categoryIndex = gameLists.firstIndex(where: { $0.category.rawValue == gameCategory })
+            if let catIndex = categoryIndex {
+                
+                var categoryModel = gameLists[catIndex]
+                
+                let featuredGame = FeaturedGame(
+                    id: UUID(),
+                    dbIdentifier: Int(gameData.externalID),
+                    name: gameData.name ?? "NONAME",
+                    imageUrl: gameData.coverUrl ?? "")
+                print("featured: \(featuredGame.name) (\(gameCategory)")
+                categoryModel.gameCollection.append(featuredGame)
+                gameLists[catIndex] = categoryModel
+            }
+        }
+    }
+    
+    func clearViewModelCollections() {
         for i in 0..<gameLists.count {
             gameLists[i].gameCollection.removeAll()
         }

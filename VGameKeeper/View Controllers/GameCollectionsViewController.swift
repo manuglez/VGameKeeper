@@ -31,6 +31,8 @@ class GameCollectionsViewController: UIViewController {
         tableView.register(UINib(nibName: "HorizontalGridGameCell", bundle: nil), forCellReuseIdentifier: HorizontalGridGameCell.reuseIdentifier)
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let moContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,15 +78,12 @@ class GameCollectionsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if AppDefaultsWrapper.shared.collectionsReload {
-            showLodingView()
-            gameCollectionViewModel.fetchCollections {
-                AppDefaultsWrapper.shared.collectionsReload = false
-                self.removeLoadingView()
-                self.tableView.reloadData()
-            }
+        showLodingView()
+        gameCollectionViewModel.fetchCollections {
+            self.removeLoadingView()
+            self.tableView.reloadData()
         }
+       
         
     }
     

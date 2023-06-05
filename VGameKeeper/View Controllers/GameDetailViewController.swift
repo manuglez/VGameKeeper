@@ -34,7 +34,7 @@ class GameDetailViewController: UIViewController{
     
     @IBAction func buttonRemoveFromCollectionPressed(_ sender: Any) {
         gameViewModel.removeGameFromCollection(game: gameInfo!) {
-            AppDefaultsWrapper.shared.collectionsReload = true
+            //AppDefaultsWrapper.shared.collectionsReload = true
             self.updateData()
         }
     }
@@ -71,7 +71,7 @@ class GameDetailViewController: UIViewController{
             name: GameCollectionViewModel.getDefaultCollection[collectionCategory]
         )
         self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
-            AppDefaultsWrapper.shared.collectionsReload = true
+            //AppDefaultsWrapper.shared.collectionsReload = true
             self.detailTableView.reloadData()
         }
     }

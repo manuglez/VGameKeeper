@@ -26,6 +26,7 @@
 		8D2A58262A2A88C300952B03 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A58252A2A88C300952B03 /* Utils.swift */; };
 		8D6F760F2A0EBF2700015A1C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */; };
 		8D6F76112A0EC42300015A1C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F76102A0EC42300015A1C /* ViewModel.swift */; };
+		8D74AC9B2A2C21B700B61BBF /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74AC9A2A2C21B700B61BBF /* CoreDataService.swift */; };
 		8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */; };
 		8D74C6622A0599AF00E76443 /* IGDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C6612A0599AF00E76443 /* IGDBConstants.swift */; };
 		8D74C6652A05BAFE00E76443 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C6642A05BAFE00E76443 /* TokenResponse.swift */; };
@@ -47,6 +48,7 @@
 		8DA0EB732A16B9610004A9CA /* UserRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA0EB722A16B9610004A9CA /* UserRegisterViewController.swift */; };
 		8DA0EB762A16FAB70004A9CA /* GameCollectionSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA0EB752A16FAB70004A9CA /* GameCollectionSectionCell.swift */; };
 		8DA0EB782A16FC510004A9CA /* GameCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA0EB772A16FC510004A9CA /* GameCollectionViewModel.swift */; };
+		8DA577322A2AC59C00486351 /* CD_Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA577302A2AC59C00486351 /* CD_Game+CoreDataClass.swift */; };
 		8DBBDFCF2A199081003942C7 /* HorizontalGridGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBBDFCD2A199081003942C7 /* HorizontalGridGameCell.swift */; };
 		8DBBDFD02A199081003942C7 /* HorizontalGridGameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBBDFCE2A199081003942C7 /* HorizontalGridGameCell.xib */; };
 		8DBBDFD22A199709003942C7 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBBDFD12A199709003942C7 /* DiscoverCollectionViewCell.xib */; };
@@ -84,6 +86,7 @@
 		8D2A58252A2A88C300952B03 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
 		8D6F76102A0EC42300015A1C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		8D74AC9A2A2C21B700B61BBF /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBAuth.swift; sourceTree = "<group>"; };
 		8D74C6612A0599AF00E76443 /* IGDBConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBConstants.swift; sourceTree = "<group>"; };
 		8D74C6642A05BAFE00E76443 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		8DA0EB722A16B9610004A9CA /* UserRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterViewController.swift; sourceTree = "<group>"; };
 		8DA0EB752A16FAB70004A9CA /* GameCollectionSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionSectionCell.swift; sourceTree = "<group>"; };
 		8DA0EB772A16FC510004A9CA /* GameCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewModel.swift; sourceTree = "<group>"; };
+		8DA577302A2AC59C00486351 /* CD_Game+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CD_Game+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8DBBDFCD2A199081003942C7 /* HorizontalGridGameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalGridGameCell.swift; sourceTree = "<group>"; };
 		8DBBDFCE2A199081003942C7 /* HorizontalGridGameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalGridGameCell.xib; sourceTree = "<group>"; };
 		8DBBDFD12A199709003942C7 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -247,6 +251,15 @@
 			path = GameCollection;
 			sourceTree = "<group>";
 		};
+		8DA5772F2A2AC59C00486351 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8DA577302A2AC59C00486351 /* CD_Game+CoreDataClass.swift */,
+				8D74AC9A2A2C21B700B61BBF /* CoreDataService.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		8DC0D6B62A0D81CC00BCF3C6 /* GameDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +280,7 @@
 		8DD4B2F32A1D42270071907E /* Data Providers */ = {
 			isa = PBXGroup;
 			children = (
+				8DA5772F2A2AC59C00486351 /* CoreData */,
 				8DD4B2F42A1D490C0071907E /* FirestoreService.swift */,
 				8DDA0B062A291FF2004E81B7 /* AppDefaultsWrapper.swift */,
 			);
@@ -396,6 +410,7 @@
 				8DA0EB6F2A15B81F0004A9CA /* GameCollectionsViewController.swift in Sources */,
 				8D28A70D2A0B4ED600C3D7C3 /* FullGame.swift in Sources */,
 				8D7CE8772A0A25E60096C330 /* DiscoverCollectionViewCell.swift in Sources */,
+				8D74AC9B2A2C21B700B61BBF /* CoreDataService.swift in Sources */,
 				8D28A7032A0AFF0F00C3D7C3 /* UIViewController+Alerts.swift in Sources */,
 				8DE9388A2A08E2A2000920C0 /* DiscoverModel.swift in Sources */,
 				8DDA0B072A291FF2004E81B7 /* AppDefaultsWrapper.swift in Sources */,
@@ -429,6 +444,7 @@
 				8D28A7052A0B03C000C3D7C3 /* GameDetailViewController.swift in Sources */,
 				8DA0EB762A16FAB70004A9CA /* GameCollectionSectionCell.swift in Sources */,
 				8D28A7092A0B2A6D00C3D7C3 /* GamePage.swift in Sources */,
+				8DA577322A2AC59C00486351 /* CD_Game+CoreDataClass.swift in Sources */,
 				8D74C6652A05BAFE00E76443 /* TokenResponse.swift in Sources */,
 				8D74C6672A05CA7800E76443 /* IGDBManager.swift in Sources */,
 				8DC0D6BA2A0D822600BCF3C6 /* GameDetailTextCell.swift in Sources */,

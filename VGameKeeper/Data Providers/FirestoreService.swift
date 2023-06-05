@@ -28,13 +28,13 @@ class FirestoreService {
         let snapshot = try await db.collection(collectionName.rawValue).whereField(fieldName, isEqualTo: value).getDocuments()
         return snapshot
         
-        /*db.collection(collectionName).whereField(fieldName, isEqualTo: value).getDocuments { snapshot, err in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                
-            }
-        }*/
+    }
+    
+    private func getDocument(collectionName: Firestore_Colecctions, documentID: String) async throws -> DocumentSnapshot {
+        
+        let ref = db.collection(collectionName.rawValue).document(documentID)
+        let snapshot = try await ref.getDocument()
+        return snapshot
     }
     
     private func registerNewItem(collectionName: Firestore_Colecctions, data: [String: Any], documentId: String? = nil) async throws -> DocumentReference?{
@@ -56,6 +56,21 @@ class FirestoreService {
             return ref
         }
         
+    }
+    
+    func getGameInfo(documentID: String) async -> [String: Any]?{
+        do {
+            let docSnapshot = try await getDocument(collectionName: .juegos, documentID: documentID)
+           // if snapshot.count > 0 {
+            if docSnapshot.exists {
+                return docSnapshot.data()
+            }
+                //return snapshot.documents.first?.reference
+           // }
+        } catch (let err){
+            print("Error getting game document: \(err)")
+        }
+        return nil
     }
     
     func findGame(byExternalId extId: Int) async -> DocumentReference? {
@@ -114,6 +129,7 @@ class FirestoreService {
                 gameData["externalID"] = gameDoc.get("igdbID") as? Int ?? 0
                 gameData["cover-url"] = gameDoc.get("imagenUrl") as? String ?? ""
                 gameData["nombre"] = gameDoc.get("nombre") as? String ?? ""
+                gameData["docid"] = gameRef?.documentID
                 collectionItem["juego"] = gameData
             }
             
@@ -142,6 +158,10 @@ class FirestoreService {
         return nil
     }
     
+    func addGameToCollection(documentID docID: String, gameCollection: GameCollectionModel) async -> DocumentReference?{
+        let gameDocReference = db.collection(Firestore_Colecctions.juegos.rawValue).document(docID)
+        return await addGameToCollection(gameReference: gameDocReference, gameCollection: gameCollection)
+    }
     func addGameToCollection(gameReference gameRef: DocumentReference, gameCollection: GameCollectionModel) async -> DocumentReference?{
         let colleccionData: [String: Any] = [
             "categoria": gameCollection.index,
