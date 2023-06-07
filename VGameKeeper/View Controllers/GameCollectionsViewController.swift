@@ -78,13 +78,14 @@ class GameCollectionsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showLodingView()
-        gameCollectionViewModel.fetchCollections {
-            self.removeLoadingView()
-            self.tableView.reloadData()
+        if AppDefaultsWrapper.shared.collectionsReload {
+            showLodingView()
+            gameCollectionViewModel.fetchCollections {
+                AppDefaultsWrapper.shared.collectionsReload = false
+                self.removeLoadingView()
+                self.tableView.reloadData()
+            }
         }
-       
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -173,7 +174,7 @@ extension GameCollectionsViewController: UITableViewDataSource {
         if indexPath.row % 2 == 1 {
             let itemIndex: Int = indexPath.row / 2
             let isOpen = gameCollectionViewModel.gameLists[itemIndex].isOpen
-            return isOpen ? UITableView.automaticDimension : 0.0
+            return isOpen ? HorizontalGridGameCell.defaultRowHeight : 0.0
         }
         
         return UITableView.automaticDimension//(self as GameCollectionsViewController).superclass.tableView(tableView, heightForRowAt: indexPath)

@@ -7,16 +7,23 @@
 
 import UIKit
 
-class GameDetailTextCell: UITableViewCell {
-
-    var itemModel: DetailModel?{
-        didSet{
-            refreshData()
+class GameDetailTextCell: UITableViewCell, GameDetailCellDelegate {
+    static var identifier: String = "gameDetailTextCell"
+    
+    var labelString: String?{
+        didSet {
+            labelTitle.text = labelString
+        }
+    }
+    var valueString: String? {
+        didSet {
+            labelDescription.text = valueString
         }
     }
 
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelDescription: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code        
@@ -24,8 +31,8 @@ class GameDetailTextCell: UITableViewCell {
     
     
     func refreshData() {
-        labelTitle.text = itemModel?.mainText?.0
-        labelDescription.text = itemModel?.mainText?.1
+        labelTitle.text = labelString
+        labelDescription.text = valueString
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

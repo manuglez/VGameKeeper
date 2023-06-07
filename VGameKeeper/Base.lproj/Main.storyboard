@@ -273,7 +273,7 @@
             </objects>
             <point key="canvasLocation" x="2640.4580152671756" y="-333.0985915492958"/>
         </scene>
-        <!--Title-->
+        <!--Búsqueda-->
         <scene sceneID="yh9-gR-eMf">
             <objects>
                 <viewController id="Szb-pg-jHu" customClass="GridSearchViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
@@ -332,7 +332,7 @@
                             <constraint firstItem="gED-nw-V9b" firstAttribute="bottom" secondItem="npK-sW-lwy" secondAttribute="bottom" id="mvn-2g-ojW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="iAt-ub-OGv"/>
+                    <navigationItem key="navigationItem" title="Búsqueda" id="iAt-ub-OGv"/>
                     <connections>
                         <outlet property="searchCollectionView" destination="npK-sW-lwy" id="Uxp-I3-bKS"/>
                         <segue destination="HYl-b2-KXY" kind="show" identifier="segueGameDetail" id="uro-Lr-TKu"/>
@@ -394,7 +394,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1cy-94-e7F">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1cy-94-e7F">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -407,6 +407,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game_detail_preview" translatesAutoresizingMaskIntoConstraints="NO" id="gS6-bD-pld">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="221"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="gS6-bD-pld" secondAttribute="height" multiplier="16:9" id="MyQ-DK-IIq"/>
                                                     </constraints>
@@ -578,6 +579,24 @@
                                             <outlet property="labelTitle" destination="Xxy-pd-FDL" id="RNx-pY-NIh"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="OjD-xE-Q8K" rowHeight="51" style="IBUITableViewCellStyleDefault" id="lIo-k9-5Js" customClass="GameDetailTextCell" customModule="VGameKeeper" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="455" width="393" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lIo-k9-5Js" id="ldM-kh-wkx">
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OjD-xE-Q8K">
+                                                    <rect key="frame" x="20" y="0.0" width="334.66666666666669" height="51"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -593,11 +612,60 @@
                     <navigationItem key="navigationItem" id="ca5-LV-Wyz"/>
                     <connections>
                         <outlet property="detailTableView" destination="1cy-94-e7F" id="NBd-wH-wnZ"/>
+                        <segue destination="FtE-M9-16b" kind="show" identifier="segueScreenshots" id="XDk-Eu-IB5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rj4-Oq-WTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4279" y="-3"/>
+            <point key="canvasLocation" x="4278.6259541984728" y="-3.5211267605633805"/>
+        </scene>
+        <!--Screenshots View Controller-->
+        <scene sceneID="DaQ-4S-pKN">
+            <objects>
+                <collectionViewController id="FtE-M9-16b" customClass="ScreenshotsViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DTK-DG-kHc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OVX-fJ-S8r">
+                            <size key="itemSize" width="200" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="screenshotIdentifier" id="hjS-qF-wxO">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0d2-zL-kPs">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="122"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o39-BJ-Y54">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="122"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="o39-BJ-Y54" firstAttribute="leading" secondItem="0d2-zL-kPs" secondAttribute="leading" id="5qF-Yx-MKR"/>
+                                        <constraint firstAttribute="bottom" secondItem="o39-BJ-Y54" secondAttribute="bottom" id="Ufc-cu-Zwh"/>
+                                        <constraint firstAttribute="trailing" secondItem="o39-BJ-Y54" secondAttribute="trailing" id="oEZ-py-h5B"/>
+                                        <constraint firstItem="o39-BJ-Y54" firstAttribute="top" secondItem="0d2-zL-kPs" secondAttribute="top" id="wJH-jf-ZE5"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="160" height="122"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="FtE-M9-16b" id="wuV-iM-QSH"/>
+                            <outlet property="delegate" destination="FtE-M9-16b" id="TIL-oe-y0F"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="UZo-Oe-x4n"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3L-y2-1Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5310.6870229007627" y="-4.2253521126760569"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vnq-RN-8Dl">
@@ -729,7 +797,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Amx-QH-5Qj"/>
+        <segue reference="uro-Lr-TKu"/>
         <segue reference="eqr-Lj-0RY"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -753,6 +821,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -52,9 +52,13 @@ extension HorizontalGridGameCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellH = collectionView.frame.size.height
+        guard cellH > 0.0 else {
+            return CGSize(width: 0.0, height: 0.0)
+        }
         let cellW = cellH / 1.3
         return CGSize(width: cellW, height: cellH)
     }
+    
 }
 
 

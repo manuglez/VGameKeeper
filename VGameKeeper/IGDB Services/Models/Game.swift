@@ -23,7 +23,7 @@ struct Game: Codable {
     let checksum: String
     let ageRatings: [Int]?
     let collection: IGDB_Item?
-    let platforms: [IGDB_Item]?
+    let platforms: [Platform]?
     let status: Int?
     let storyline: String?
 

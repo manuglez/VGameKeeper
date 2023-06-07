@@ -7,7 +7,8 @@
 
 import UIKit
 
-class GameDetailHeaderCell: UITableViewCell {
+class GameDetailHeaderCell: UITableViewCell, GameDetailCellDelegate {
+    static var identifier: String = "gameDetailHeaderCell"
 
     //var coverUrl, headerUrl, gameTitle: String?
     var itemModel: DetailModel? {
@@ -67,6 +68,13 @@ class GameDetailHeaderCell: UITableViewCell {
             } else {
                 buttonAddToWishlist.isHidden = false
                 gameCollectionContainer.isHidden = true
+            }
+            
+            if let backgroundImageUrl = dataDictionary[DetailModel.DATA_HEADER_BACKGROUND_KEY] as? String,
+               let imageUrl = URL(string: IGDBUtilities.bigScrenshotSizeUrl(backgroundImageUrl))
+            {
+                imageHeaderBg.image = nil
+                imageHeaderBg.fetch(fromURL: imageUrl)
             }
         }
     }

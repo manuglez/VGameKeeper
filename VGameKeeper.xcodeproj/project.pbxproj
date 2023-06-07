@@ -26,6 +26,11 @@
 		8D2A58262A2A88C300952B03 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A58252A2A88C300952B03 /* Utils.swift */; };
 		8D6F760F2A0EBF2700015A1C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */; };
 		8D6F76112A0EC42300015A1C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F76102A0EC42300015A1C /* ViewModel.swift */; };
+		8D700C612A2FCAB8001D92E5 /* TextSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */; };
+		8D700C622A2FCAB8001D92E5 /* TextSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D700C602A2FCAB8001D92E5 /* TextSetCell.xib */; };
+		8D700C642A2FDE8C001D92E5 /* GameDetailCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C632A2FDE8C001D92E5 /* GameDetailCellDelegate.swift */; };
+		8D700C662A2FF45F001D92E5 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C652A2FF45F001D92E5 /* Platform.swift */; };
+		8D700C682A300401001D92E5 /* ScreenshotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C672A300401001D92E5 /* ScreenshotsViewController.swift */; };
 		8D74AC9B2A2C21B700B61BBF /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74AC9A2A2C21B700B61BBF /* CoreDataService.swift */; };
 		8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */; };
 		8D74C6622A0599AF00E76443 /* IGDBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C6612A0599AF00E76443 /* IGDBConstants.swift */; };
@@ -86,6 +91,11 @@
 		8D2A58252A2A88C300952B03 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
 		8D6F76102A0EC42300015A1C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSetCell.swift; sourceTree = "<group>"; };
+		8D700C602A2FCAB8001D92E5 /* TextSetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextSetCell.xib; sourceTree = "<group>"; };
+		8D700C632A2FDE8C001D92E5 /* GameDetailCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailCellDelegate.swift; sourceTree = "<group>"; };
+		8D700C652A2FF45F001D92E5 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		8D700C672A300401001D92E5 /* ScreenshotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsViewController.swift; sourceTree = "<group>"; };
 		8D74AC9A2A2C21B700B61BBF /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		8D74C65F2A0590BF00E76443 /* IGDBAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBAuth.swift; sourceTree = "<group>"; };
 		8D74C6612A0599AF00E76443 /* IGDBConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBConstants.swift; sourceTree = "<group>"; };
@@ -207,6 +217,7 @@
 				8D1562ED2A076B340000F850 /* IGDB_Item.swift */,
 				8D7CE8702A09AF130096C330 /* Cover.swift */,
 				8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */,
+				8D700C652A2FF45F001D92E5 /* Platform.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,8 +274,11 @@
 		8DC0D6B62A0D81CC00BCF3C6 /* GameDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8D700C632A2FDE8C001D92E5 /* GameDetailCellDelegate.swift */,
 				8DC0D6B72A0D821100BCF3C6 /* GameDetailHeaderCell.swift */,
 				8DC0D6B92A0D822600BCF3C6 /* GameDetailTextCell.swift */,
+				8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */,
+				8D700C602A2FCAB8001D92E5 /* TextSetCell.xib */,
 			);
 			path = GameDetail;
 			sourceTree = "<group>";
@@ -308,6 +322,7 @@
 				8DA0EB6E2A15B81F0004A9CA /* GameCollectionsViewController.swift */,
 				8DA0EB722A16B9610004A9CA /* UserRegisterViewController.swift */,
 				8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */,
+				8D700C672A300401001D92E5 /* ScreenshotsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -393,6 +408,7 @@
 				8D2340E12A044579005A62A9 /* LaunchScreen.storyboard in Resources */,
 				8DA0EB642A15B4EF0004A9CA /* GoogleService-Info.plist in Resources */,
 				8D2340DE2A044579005A62A9 /* Assets.xcassets in Resources */,
+				8D700C622A2FCAB8001D92E5 /* TextSetCell.xib in Resources */,
 				8D2340D92A044578005A62A9 /* Main.storyboard in Resources */,
 				8DBBDFD22A199709003942C7 /* DiscoverCollectionViewCell.xib in Resources */,
 				8DA0EB712A16B1B10004A9CA /* AppColors.xcassets in Resources */,
@@ -422,10 +438,12 @@
 				8DE938852A08E1F6000920C0 /* DiscoverViewModel.swift in Sources */,
 				8D28A70B2A0B4D4F00C3D7C3 /* IGDBUtilities.swift in Sources */,
 				8D2340D62A044578005A62A9 /* HomeViewController.swift in Sources */,
+				8D700C642A2FDE8C001D92E5 /* GameDetailCellDelegate.swift in Sources */,
 				8D74C6602A0590BF00E76443 /* IGDBAuth.swift in Sources */,
 				8D2A58262A2A88C300952B03 /* Utils.swift in Sources */,
 				8D7CE8712A09AF130096C330 /* Cover.swift in Sources */,
 				8D7CE8792A0A2A2D0096C330 /* DiscoverCollectionView.swift in Sources */,
+				8D700C682A300401001D92E5 /* ScreenshotsViewController.swift in Sources */,
 				8DD4B2F52A1D490C0071907E /* FirestoreService.swift in Sources */,
 				8DE9388C2A08E344000920C0 /* FeaturedGame.swift in Sources */,
 				8DA0EB732A16B9610004A9CA /* UserRegisterViewController.swift in Sources */,
@@ -436,7 +454,9 @@
 				8D74C6622A0599AF00E76443 /* IGDBConstants.swift in Sources */,
 				8DC0D6BF2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift in Sources */,
 				8D1562EE2A076B340000F850 /* IGDB_Item.swift in Sources */,
+				8D700C612A2FCAB8001D92E5 /* TextSetCell.swift in Sources */,
 				8D1562EC2A076B100000F850 /* Game.swift in Sources */,
+				8D700C662A2FF45F001D92E5 /* Platform.swift in Sources */,
 				8D1562F02A0772CC0000F850 /* IGDBRequest.swift in Sources */,
 				8D7CE8742A09C8550096C330 /* UIImageView+ImageFetch.swift in Sources */,
 				8DBBDFCF2A199081003942C7 /* HorizontalGridGameCell.swift in Sources */,

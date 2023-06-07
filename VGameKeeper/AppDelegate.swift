@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         IGDBManager.configure()
         
+        AppDefaultsWrapper.shared.firstRunLoad = true
         AppDefaultsWrapper.shared.collectionsReload = true
         
         return true

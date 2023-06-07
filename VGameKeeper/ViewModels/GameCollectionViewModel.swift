@@ -64,6 +64,7 @@ class GameCollectionViewModel: ViewModel {
     }
     
     func fetchFromCoredata() -> Bool {//[FeaturedGame]{
+        print("******** Fetch form Core Data")
         do {
             
             let cd_gamesList = try cd_context.fetch(CD_Game.fetchRequest())
@@ -79,6 +80,7 @@ class GameCollectionViewModel: ViewModel {
     }
     
     func fetchFromFirestore() async{
+        print("******** Fetch form Firestore")
         let firestore = FirestoreService()
         do {
             let firestoreData = try await firestore.queryUserCollections()
@@ -89,7 +91,7 @@ class GameCollectionViewModel: ViewModel {
                 if gameCategory != -1 {
                         
                     let gameData: [String: Any] = collectionItem["juego"] as! [String : Any]
-                    let gameID = UUID()
+                    //let gameID = UUID()
                     let gameName = gameData["nombre"] as? String ?? ""
                     let gameExternalID = gameData["externalID"] as? Int ?? 0
                     let gameImageUrl = gameData["cover-url"] as? String ?? ""
@@ -119,10 +121,10 @@ class GameCollectionViewModel: ViewModel {
     func fetchCollections(completion : @escaping () -> ()) {
         Task {
             clearViewModelCollections()
-            if AppDefaultsWrapper.shared.collectionsReload {
+            if AppDefaultsWrapper.shared.firstRunLoad {
                 CoreDataService.shared.clearGamesData()
                await fetchFromFirestore()
-               AppDefaultsWrapper.shared.collectionsReload = false
+               AppDefaultsWrapper.shared.firstRunLoad = false
             }else {
                 let _ = fetchFromCoredata()
             }

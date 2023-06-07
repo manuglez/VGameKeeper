@@ -18,7 +18,8 @@ struct FullGame: Codable {
     let gameModes, genres: [IGDB_Item]?
     let hypes: Int?
     let name: String
-    let platforms, playerPerspectives: [IGDB_Item]?
+    let platforms: [Platform]?
+    let playerPerspectives: [IGDB_Item]?
     let screenshots: [Cover]?
     let similarGames: [SimilarGame]?
     let slug, storyline, summary: String?

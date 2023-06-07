@@ -15,16 +15,33 @@ class GameDetailViewController: UIViewController{
     
     @IBOutlet weak var detailTableView: UITableView!
     
+    var selectedIndexPath: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         detailTableView.dataSource = self
         detailTableView.delegate = self
+        
+        detailTableView.register(UINib(nibName: "TextSetCell", bundle: nil), forCellReuseIdentifier: TextSetCell.identifier)
+        
        if let game = self.gameInfo {
             gameViewModel.fetchGameFullInfo(
                 gameID: game.dbIdentifier) {
                    self.updateData()
                 }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueScreenshots" {
+            let nextVC = segue.destination as! ScreenshotsViewController
+            
+            if let indexpath = selectedIndexPath {
+                let viewModelItem = gameViewModel.viewItems[indexpath.row]
+                nextVC.screenshotsUrlList = viewModelItem.textArray
+            }
+            
         }
     }
     
@@ -34,7 +51,7 @@ class GameDetailViewController: UIViewController{
     
     @IBAction func buttonRemoveFromCollectionPressed(_ sender: Any) {
         gameViewModel.removeGameFromCollection(game: gameInfo!) {
-            //AppDefaultsWrapper.shared.collectionsReload = true
+            AppDefaultsWrapper.shared.collectionsReload = true
             self.updateData()
         }
     }
@@ -71,7 +88,7 @@ class GameDetailViewController: UIViewController{
             name: GameCollectionViewModel.getDefaultCollection[collectionCategory]
         )
         self.gameViewModel.addGameToCollection(game: game, gameCollection: gameCollection){
-            //AppDefaultsWrapper.shared.collectionsReload = true
+            AppDefaultsWrapper.shared.collectionsReload = true
             self.detailTableView.reloadData()
         }
     }
@@ -95,29 +112,45 @@ class GameDetailViewController: UIViewController{
 
 extension GameDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameViewModel.items.count
+        return gameViewModel.viewItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModelItem = gameViewModel.viewItems[indexPath.row]
         
-        switch gameViewModel.items[indexPath.row].itemType {
-            
+        switch viewModelItem.itemType {
         case .header:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "gameDetailHeaderCell", for: indexPath) as! GameDetailHeaderCell
-            cell.itemModel = gameViewModel.items[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: GameDetailHeaderCell.identifier, for: indexPath) as! GameDetailHeaderCell
+            cell.itemModel = viewModelItem
             return cell
         case .textValue:
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
             var content = cell.defaultContentConfiguration()
-            content.text = gameViewModel.items[indexPath.row].mainText?.0
+            content.text = viewModelItem.mainText?.0
             content.textProperties.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-            content.secondaryText = gameViewModel.items[indexPath.row].mainText?.1
+            content.secondaryText = viewModelItem.mainText?.1
             content.secondaryTextProperties.font = UIFont.systemFont(ofSize: 16, weight: .regular)
             cell.contentConfiguration = content
             return cell
         case .textField:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "gameDetailTextCell", for: indexPath) as! GameDetailTextCell
-            cell.itemModel = gameViewModel.items[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: GameDetailTextCell.identifier, for: indexPath) as! GameDetailTextCell
+            cell.labelString = viewModelItem.mainText?.0
+            cell.valueString = viewModelItem.mainText?.1
+            return cell
+        case .multipleText:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TextSetCell.identifier, for: indexPath) as! TextSetCell
+            cell.titleString = viewModelItem.mainText?.0
+            cell.textItems = viewModelItem.textSet
+            return cell
+        case .screenshots:
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "cellIdentifier")
+            cell.accessoryType = .disclosureIndicator
+            
+            var content = cell.defaultContentConfiguration()
+            content.text = viewModelItem.mainText?.0
+            content.textProperties.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+            content.secondaryTextProperties.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            cell.contentConfiguration = content
             return cell
         default:
             let cell = UITableViewCell(style: .default, reuseIdentifier: "cellIdentifier")
@@ -139,5 +172,15 @@ extension GameDetailViewController: UITableViewDataSource {
 }
 
 extension GameDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return gameViewModel.viewItems[indexPath.row].highlight
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModelItem = gameViewModel.viewItems[indexPath.row]
+        if viewModelItem.itemType == .screenshots {
+            selectedIndexPath = indexPath
+            performSegue(withIdentifier: "segueScreenshots", sender: nil)
+        }
+    }
 }
