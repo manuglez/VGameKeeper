@@ -24,6 +24,7 @@
 		8D28A70B2A0B4D4F00C3D7C3 /* IGDBUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */; };
 		8D28A70D2A0B4ED600C3D7C3 /* FullGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */; };
 		8D2A58262A2A88C300952B03 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A58252A2A88C300952B03 /* Utils.swift */; };
+		8D4E1D932A310F9E007A2DC0 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4E1D922A310F9E007A2DC0 /* FullSizeImageViewController.swift */; };
 		8D6F760F2A0EBF2700015A1C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */; };
 		8D6F76112A0EC42300015A1C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F76102A0EC42300015A1C /* ViewModel.swift */; };
 		8D700C612A2FCAB8001D92E5 /* TextSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */; };
@@ -89,6 +90,7 @@
 		8D28A70A2A0B4D4F00C3D7C3 /* IGDBUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBUtilities.swift; sourceTree = "<group>"; };
 		8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGame.swift; sourceTree = "<group>"; };
 		8D2A58252A2A88C300952B03 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		8D4E1D922A310F9E007A2DC0 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
 		8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
 		8D6F76102A0EC42300015A1C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSetCell.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				8DA0EB722A16B9610004A9CA /* UserRegisterViewController.swift */,
 				8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */,
 				8D700C672A300401001D92E5 /* ScreenshotsViewController.swift */,
+				8D4E1D922A310F9E007A2DC0 /* FullSizeImageViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				8D2A58262A2A88C300952B03 /* Utils.swift in Sources */,
 				8D7CE8712A09AF130096C330 /* Cover.swift in Sources */,
 				8D7CE8792A0A2A2D0096C330 /* DiscoverCollectionView.swift in Sources */,
+				8D4E1D932A310F9E007A2DC0 /* FullSizeImageViewController.swift in Sources */,
 				8D700C682A300401001D92E5 /* ScreenshotsViewController.swift in Sources */,
 				8DD4B2F52A1D490C0071907E /* FirestoreService.swift in Sources */,
 				8DE9388C2A08E344000920C0 /* FeaturedGame.swift in Sources */,
@@ -614,8 +618,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XZZ74444UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VGameKeeper/Info.plist;
@@ -631,6 +637,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mgl.VGameKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -642,8 +649,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XZZ74444UP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VGameKeeper/Info.plist;
@@ -659,6 +668,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mgl.VGameKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

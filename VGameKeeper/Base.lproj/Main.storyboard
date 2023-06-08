@@ -662,10 +662,66 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="UZo-Oe-x4n"/>
+                    <connections>
+                        <segue destination="zDo-q2-hkA" kind="show" identifier="segueFullImage" id="3ga-7r-SJS"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3L-y2-1Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5310.6870229007627" y="-4.2253521126760569"/>
+        </scene>
+        <!--Full Size Image View Controller-->
+        <scene sceneID="Vpe-zm-K6F">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="zDo-q2-hkA" customClass="FullSizeImageViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JK6-Hw-gLw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0zT-P3-rrI">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" systemColor="secondaryLabelColor"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAb-gX-G65">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hEK-RU-2ai">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hEK-RU-2ai" firstAttribute="width" secondItem="jCG-jG-yk3" secondAttribute="width" id="1WM-je-Man"/>
+                                    <constraint firstItem="xW6-Dw-hnh" firstAttribute="top" secondItem="hEK-RU-2ai" secondAttribute="top" id="ADo-JA-Wk8"/>
+                                    <constraint firstItem="hEK-RU-2ai" firstAttribute="trailing" secondItem="xW6-Dw-hnh" secondAttribute="trailing" id="Lqq-ca-Mna"/>
+                                    <constraint firstItem="hEK-RU-2ai" firstAttribute="bottom" secondItem="xW6-Dw-hnh" secondAttribute="bottom" id="TFP-ey-JkP"/>
+                                    <constraint firstItem="hEK-RU-2ai" firstAttribute="height" secondItem="jCG-jG-yk3" secondAttribute="height" id="Xxn-YR-5Fh"/>
+                                    <constraint firstItem="hEK-RU-2ai" firstAttribute="leading" secondItem="xW6-Dw-hnh" secondAttribute="leading" id="ZLE-wo-cgg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="xW6-Dw-hnh"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="jCG-jG-yk3"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LRs-Pw-eNK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0zT-P3-rrI" firstAttribute="centerX" secondItem="JK6-Hw-gLw" secondAttribute="centerX" id="QTF-du-oaE"/>
+                            <constraint firstItem="0zT-P3-rrI" firstAttribute="centerY" secondItem="JK6-Hw-gLw" secondAttribute="centerY" id="Uaw-OB-tj4"/>
+                            <constraint firstItem="zAb-gX-G65" firstAttribute="top" secondItem="JK6-Hw-gLw" secondAttribute="top" id="XCW-4b-bPg"/>
+                            <constraint firstAttribute="bottom" secondItem="zAb-gX-G65" secondAttribute="bottom" id="YnU-BP-UGZ"/>
+                            <constraint firstItem="zAb-gX-G65" firstAttribute="trailing" secondItem="LRs-Pw-eNK" secondAttribute="trailing" id="pvK-aj-eCQ"/>
+                            <constraint firstItem="zAb-gX-G65" firstAttribute="leading" secondItem="LRs-Pw-eNK" secondAttribute="leading" id="zim-Jw-biO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WxV-P9-4dC"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="0zT-P3-rrI" id="Cyw-IF-Zh3"/>
+                        <outlet property="mainImageView" destination="hEK-RU-2ai" id="Apx-Bb-9nm"/>
+                        <outlet property="scrollView" destination="zAb-gX-G65" id="RLQ-31-aIr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39g-ks-WAy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6148.8549618320612" y="-4.2253521126760569"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vnq-RN-8Dl">
@@ -697,14 +753,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signoutCell" id="wWN-h7-Cuu">
-                                <rect key="frame" x="0.0" y="50" width="393" height="53.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="54.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWN-h7-Cuu" id="9tM-dz-zkz">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="53.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldq-dk-taF">
-                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="33.666666666666664"/>
+                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="34.333333333333336"/>
                                             <color key="tintColor" systemColor="systemRedColor"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Cerrar sesión">
@@ -723,14 +779,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signinCell" id="MBd-Fo-3QA">
-                                <rect key="frame" x="0.0" y="103.66666793823242" width="393" height="55.333332061767578"/>
+                                <rect key="frame" x="0.0" y="104.33333206176758" width="393" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MBd-Fo-3QA" id="uzX-Rm-H7X">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-h8-Tmh">
-                                            <rect key="frame" x="217" y="10" width="111" height="35.333333333333336"/>
+                                            <rect key="frame" x="217" y="10" width="111" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Registrarse">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -738,7 +794,7 @@
                                             </buttonConfiguration>
                                         </button>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxp-Mj-dBU">
-                                            <rect key="frame" x="54" y="10" width="123" height="35.333333333333336"/>
+                                            <rect key="frame" x="54" y="10" width="123" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Iniciar sesión">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -818,6 +874,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

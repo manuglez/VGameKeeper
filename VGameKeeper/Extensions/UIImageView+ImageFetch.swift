@@ -15,11 +15,14 @@ enum FetchError:Error{
 }
 
 extension UIImageView {
-    func fetch(fromURL url: URL) {
+    typealias BasicClosure = () -> ()
+
+    func fetch(fromURL url: URL, completion: BasicClosure? = nil ) {
         Task {
             let uiimage = try await asyncDonwload(fromURL:url)
             DispatchQueue.main.async {
                 self.image = uiimage
+                completion?()
             }
         }
     }

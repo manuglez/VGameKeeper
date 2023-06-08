@@ -16,6 +16,8 @@ class ScreenshotsViewController: UICollectionViewController {
         }
     }
     
+    var selecterUrlString: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,42 +31,40 @@ class ScreenshotsViewController: UICollectionViewController {
         // Set estimated cell size
         self.navigationItem.title = "Screenshots"
          let collectionFlowLayout = UICollectionViewFlowLayout()
-         //collectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let w = (UIScreen.main.bounds.width / 3.0) - 4.0
-        //let w = collectionView.frame.size.width / 3
         collectionFlowLayout.itemSize = CGSize(width: w, height: (w * 9) / 16)
         collectionFlowLayout.minimumLineSpacing = 2
         collectionFlowLayout.minimumInteritemSpacing = 2
          collectionView.collectionViewLayout = collectionFlowLayout
-        /*if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            print("flowlayout")
-            layout.itemSize = CGSize(width: 100, height: 100)
-            layout.minimumLineSpacing = 0
-            layout.minimumInteritemSpacing = 0
-            collectionView.collectionViewLayout = layout
-        }*/
     }
 
-    /*
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //self.hidesBottomBarWhenPushed = false
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "segueFullImage" {
+            if let nextVC = segue.destination as? FullSizeImageViewController {
+                self.hidesBottomBarWhenPushed = true
+                nextVC.imageStringUrl = selecterUrlString
+            }
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return screenshotsUrlList?.count ?? 0
     }
 
@@ -86,6 +86,10 @@ class ScreenshotsViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selecterUrlString = screenshotsUrlList?[indexPath.row]
+        performSegue(withIdentifier: "segueFullImage", sender: nil)
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
