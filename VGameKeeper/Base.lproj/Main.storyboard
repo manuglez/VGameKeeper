@@ -392,7 +392,7 @@
         <!--Game Detail View Controller-->
         <scene sceneID="D23-gc-0wa">
             <objects>
-                <viewController id="HYl-b2-KXY" customClass="GameDetailViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDetailVC" id="HYl-b2-KXY" customClass="GameDetailViewController" customModule="VGameKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ADZ-Nx-wUW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -768,14 +768,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signoutCell" id="wWN-h7-Cuu">
-                                <rect key="frame" x="0.0" y="50" width="393" height="53.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="54.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wWN-h7-Cuu" id="9tM-dz-zkz">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="53.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldq-dk-taF">
-                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="33.666666666666664"/>
+                                            <rect key="frame" x="134.66666666666666" y="10" width="123.66666666666666" height="34.333333333333336"/>
                                             <color key="tintColor" systemColor="systemRedColor"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Cerrar sesión">
@@ -794,14 +794,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="signinCell" id="MBd-Fo-3QA">
-                                <rect key="frame" x="0.0" y="103.66666793823242" width="393" height="55.333332061767578"/>
+                                <rect key="frame" x="0.0" y="104.33333206176758" width="393" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MBd-Fo-3QA" id="uzX-Rm-H7X">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-h8-Tmh">
-                                            <rect key="frame" x="217" y="10" width="111" height="35.333333333333336"/>
+                                            <rect key="frame" x="217" y="10" width="111" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Registrarse">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
@@ -809,7 +809,7 @@
                                             </buttonConfiguration>
                                         </button>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxp-Mj-dBU">
-                                            <rect key="frame" x="54" y="10" width="123" height="35.333333333333336"/>
+                                            <rect key="frame" x="54" y="10" width="123" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="tinted" title="Iniciar sesión">
                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>

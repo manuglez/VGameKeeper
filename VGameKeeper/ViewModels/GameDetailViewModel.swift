@@ -15,10 +15,13 @@ enum DetailItemType{
     case screenshots
     case horizontalGrid
     case multipleText
+    case section
 }
 struct DetailModel {
     static let DATA_HEADER_COLLECTION_KEY = "collection"
     static let DATA_HEADER_BACKGROUND_KEY = "background"
+    static let DATA_HGRID_SIMILARGAMES_KEY = "featuredList"
+    
     var itemType: DetailItemType
     var mainText: (String, String)? // Label, Value
     var secondaryText: (String, String)? // Label, Value
@@ -214,6 +217,21 @@ class GameDetailViewModel: ViewModel {
                 highlight: true
             )
             viewItems.append(screenshotsItem)
+        }
+        
+        if let similarGames = gameInfo?.similarGames {
+            let sectionItem = DetailModel(
+                itemType: .section,
+                mainText: ("Juegos Similares", "Juegos Similares")
+            )
+            viewItems.append(sectionItem)
+            
+            let similarGamesItem = DetailModel(
+                itemType: .horizontalGrid,
+                mainText: ("Juegos Similares", "Juegos Similares"),
+                dataDictionary: [DetailModel.DATA_HGRID_SIMILARGAMES_KEY: similarGames]
+            )
+            viewItems.append(similarGamesItem)
         }
     }
     

@@ -17,6 +17,12 @@ class GameDetailViewController: UIViewController{
     
     var selectedIndexPath: IndexPath?
     
+    static func createInstance() -> GameDetailViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "GameDetailVC")
+        return vc as? GameDetailViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +31,10 @@ class GameDetailViewController: UIViewController{
         
         detailTableView.register(UINib(nibName: "TextSetCell", bundle: nil), forCellReuseIdentifier: TextSetCell.identifier)
         
-       if let game = self.gameInfo {
+        detailTableView.register(UINib(nibName: "HorizontalGridGameCell", bundle: nil), forCellReuseIdentifier: HorizontalGridGameCell.reuseIdentifier)
+        
+        if let game = self.gameInfo {
+            self.navigationItem.backButtonTitle = game.name
             gameViewModel.fetchGameFullInfo(
                 gameID: game.dbIdentifier) {
                    self.updateData()
@@ -132,6 +141,14 @@ class GameDetailViewController: UIViewController{
 }
 
 extension GameDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if gameViewModel.viewItems[indexPath.row].itemType == .horizontalGrid {
+            return HorizontalGridGameCell.defaultRowHeight
+        }
+        
+        return UITableView.automaticDimension
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gameViewModel.viewItems.count
     }
@@ -176,18 +193,29 @@ extension GameDetailViewController: UITableViewDataSource {
             content.secondaryTextProperties.font = UIFont.systemFont(ofSize: 16, weight: .regular)
             cell.contentConfiguration = content
             return cell
-        default:
+        case .horizontalGrid :
+            let featuredGameList: [FeaturedGame] = viewModelItem.dataDictionary?[DetailModel.DATA_HGRID_SIMILARGAMES_KEY] as? [FeaturedGame] ?? []
+            let gridCell = tableView.dequeueReusableCell(withIdentifier: HorizontalGridGameCell.reuseIdentifier, for: indexPath) as! HorizontalGridGameCell
+            let viewModelWrap = DiscoverModel(
+                sectionName: viewModelItem.mainText?.0 ?? "Juegos Similares",
+                gamesList: featuredGameList)
+            gridCell.discoverModel = viewModelWrap
+            gridCell.featuredGameDelegate = self
+            return gridCell
+        case .section :
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+            var content = cell.defaultContentConfiguration()
+            content.text = viewModelItem.mainText?.0
+            content.textProperties.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+            cell.contentConfiguration = content
+            return cell
+        /*default:
             let cell = UITableViewCell(style: .default, reuseIdentifier: "cellIdentifier")
             var content = cell.defaultContentConfiguration()
             content.text = "No Data"
             cell.contentConfiguration = content
-            return cell
-        /*case .horizontalGrid:
-            break
-        case .multipleText:
-            break
-        
-            */
+            return cell*/
+       
         }
         
     }
@@ -205,6 +233,15 @@ extension GameDetailViewController: UITableViewDelegate {
         if viewModelItem.itemType == .screenshots {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "segueScreenshots", sender: nil)
+        }
+    }
+}
+
+extension GameDetailViewController: FeaturedGamesGridDelegate {
+    func gameSelectedFromGrid(itemIndex: Int, featuredGame: FeaturedGame) {
+        if let nextVC = GameDetailViewController.createInstance() {
+            nextVC.gameInfo = featuredGame
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
 }
