@@ -219,6 +219,9 @@ class GameDetailViewModel: ViewModel {
     
    private func searchFirestoreCollections(gameID: Int) async throws {
         let fr = FirestoreService()
+       guard fr.hasUserData() else {
+           return
+       }
         if let gameRef = await fr.findGame(byExternalId: gameID) {
             try await buildCollectionModel(gameRef: gameRef)
         }

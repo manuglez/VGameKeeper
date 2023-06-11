@@ -17,6 +17,7 @@ class ScreenshotsViewController: UICollectionViewController {
     }
     
     var selecterUrlString: String?
+    var selectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,12 @@ class ScreenshotsViewController: UICollectionViewController {
                 self.hidesBottomBarWhenPushed = true
                 nextVC.imageStringUrl = selecterUrlString
             }
+        } else if segue.identifier == "segueScreenshotsPageView" {
+            if let nextVC = segue.destination as? ScreenshotsPagesViewController {
+                self.hidesBottomBarWhenPushed = true
+                nextVC.imagesUrlList = screenshotsUrlList
+                nextVC.initialIndex = selectedIndex
+            }
         }
     }
     
@@ -88,7 +95,10 @@ class ScreenshotsViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selecterUrlString = screenshotsUrlList?[indexPath.row]
-        performSegue(withIdentifier: "segueFullImage", sender: nil)
+        //performSegue(withIdentifier: "segueFullImage", sender: nil)
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "segueScreenshotsPageView", sender: nil)
+    
     }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

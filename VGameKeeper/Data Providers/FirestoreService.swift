@@ -17,11 +17,15 @@ enum Firestore_Colecctions: String {
 
 class FirestoreService {
     let db = Firestore.firestore()
-    
+
     lazy var userReference: DocumentReference = {
         let user_uid = Auth.auth().currentUser!.uid
         return self.db.collection(Firestore_Colecctions.usuarios.rawValue).document(user_uid)
     }()
+    
+    func hasUserData() -> Bool {
+        return Auth.auth().currentUser != nil
+    }
     
     private func query(collectionName: Firestore_Colecctions, fieldName: String, value: Any) async throws ->  QuerySnapshot {
         

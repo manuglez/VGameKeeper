@@ -48,18 +48,22 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @objc func registerPressed(_ sender: UIButton){
-        performSegue(withIdentifier: "segueRegister", sender: nil)
+        //sender.tag = 1
+        performSegue(withIdentifier: "segueRegister", sender: sender)
     }
     
+    @objc func loginPressed(_ sender: UIButton){
+        //sender.tag = 2
+        performSegue(withIdentifier: "segueRegister", sender: sender)
+    }
+   
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 3
     }
 
@@ -89,11 +93,13 @@ class SettingsTableViewController: UITableViewController {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "signinCell", for: indexPath)
-                let registerButton: UIButton = cell.viewWithTag(2) as! UIButton
-                registerButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
+                if let registerButton: UIButton = cell.viewWithTag(2) as? UIButton {
+                    registerButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
+                }
                 
-                let loginButton: UIButton = cell.viewWithTag(1) as! UIButton
-                loginButton.addTarget(self, action: #selector(registerPressed), for: .touchUpInside)
+                if let loginButton: UIButton = cell.viewWithTag(1) as? UIButton {
+                    loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
+                }
                 
                 return cell
             }
@@ -154,7 +160,11 @@ class SettingsTableViewController: UITableViewController {
             var isLogin = true
             if let senderView = sender as? UIView {
                 isLogin = senderView.tag == 1
+                //nextVC.popoverPresentationController?.sourceItem = senderView
+               // nextVC.popoverPresentationController?.sourceRect = senderView.bounds;
+               // nextVC.popoverPresentationController?.sourceView = senderView;
             }
+            
             
             nextVC.isLogin = isLogin
         }

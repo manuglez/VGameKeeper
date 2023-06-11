@@ -25,7 +25,9 @@ class UserRegisterViewController: UIViewController {
         
         if isLogin {
             textViewName.removeFromSuperview()
-            buttonLogin.titleLabel?.text = "Iniciar Sesión"
+            var conf = buttonLogin.configuration
+            conf?.title = "Iniciar Sesión"
+            buttonLogin.configuration = conf
         }
     }
     

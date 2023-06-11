@@ -24,7 +24,7 @@ class GameCollectionsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.bringSubviewToFront(tableView)
+       // view.bringSubviewToFront(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -32,15 +32,16 @@ class GameCollectionsViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let moContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let _ = Auth.auth().currentUser {
             print("WE HAVE AN USER")
+            view.bringSubviewToFront(tableView)
         } else {
             print("NO USER")
+            view.bringSubviewToFront(noUserView)
         }
         
         authHandler = Auth.auth().addStateDidChangeListener { auth, user in
@@ -54,7 +55,7 @@ class GameCollectionsViewController: UIViewController {
         }
         
         Task {
-            try await addDataChangeListener()
+           // try await addDataChangeListener()
         }
     }
     
@@ -124,7 +125,7 @@ class GameCollectionsViewController: UIViewController {
         self.view.sendSubviewToBack(loadingView!)
         loadingView?.removeFromSuperview()
         loadingView = nil
-        self.view.bringSubviewToFront(tableView)
+        //self.view.bringSubviewToFront(tableView)
     }
 
     // MARK: - Navigation

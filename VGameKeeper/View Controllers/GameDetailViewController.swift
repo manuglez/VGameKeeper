@@ -33,6 +33,11 @@ class GameDetailViewController: UIViewController{
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hidesBottomBarWhenPushed = false
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueScreenshots" {
             let nextVC = segue.destination as! ScreenshotsViewController
@@ -41,11 +46,20 @@ class GameDetailViewController: UIViewController{
                 let viewModelItem = gameViewModel.viewItems[indexpath.row]
                 nextVC.screenshotsUrlList = viewModelItem.textArray
             }
+        } else if segue.identifier == "segueFullImage" {
+            let nextVC = segue.destination as! FullSizeImageViewController
+            nextVC.imageStringUrl = gameInfo?.imageUrl
+            nextVC.imageType = .cover
+            hidesBottomBarWhenPushed = true
             
         }
     }
     
     @IBAction func buttonAddToWishlistPressed(_ sender: Any) {
+        guard FirestoreService().hasUserData() else {
+            showSimpleAlert(title: "No es posible realizar la función.", message: "Se necesita registrar su usuario para continuar.")
+            return
+        }
         addGameToCollection(collectionCategory: 2)
     }
     
@@ -57,6 +71,10 @@ class GameDetailViewController: UIViewController{
     }
     
     @IBAction func buttonAddToListPressed(_ sender: Any) {
+        guard FirestoreService().hasUserData() else {
+            showSimpleAlert(title: "No es posible realizar la función.", message: "Se necesita registrar su usuario para continuar.")
+            return
+        }
         var listaColecciones = GameCollectionViewModel.getDefaultCollection
         let collectionIndex = gameViewModel.getCollectionIndex()
         if collectionIndex != -1 {
@@ -108,6 +126,9 @@ class GameDetailViewController: UIViewController{
     }
     */
 
+    @objc func coverTapped() {
+        performSegue(withIdentifier: "segueFullImage", sender: nil)
+    }
 }
 
 extension GameDetailViewController: UITableViewDataSource {
@@ -122,6 +143,9 @@ extension GameDetailViewController: UITableViewDataSource {
         case .header:
             let cell = tableView.dequeueReusableCell(withIdentifier: GameDetailHeaderCell.identifier, for: indexPath) as! GameDetailHeaderCell
             cell.itemModel = viewModelItem
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(coverTapped))
+            cell.imageGameCover.addGestureRecognizer(tapGesture)
+            
             return cell
         case .textValue:
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")

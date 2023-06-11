@@ -80,8 +80,13 @@ class GameCollectionViewModel: ViewModel {
     }
     
     func fetchFromFirestore() async{
+        
         print("******** Fetch form Firestore")
         let firestore = FirestoreService()
+        guard firestore.hasUserData() else {
+            print("******** No User Data")
+            return
+        }
         do {
             let firestoreData = try await firestore.queryUserCollections()
             let coredata = CoreDataService.shared

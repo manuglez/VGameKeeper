@@ -62,6 +62,7 @@
 		8DC0D6BA2A0D822600BCF3C6 /* GameDetailTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6B92A0D822600BCF3C6 /* GameDetailTextCell.swift */; };
 		8DC0D6BC2A0DF50300BCF3C6 /* GridSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6BB2A0DF50300BCF3C6 /* GridSearchViewController.swift */; };
 		8DC0D6BF2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC0D6BE2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift */; };
+		8DD2C7B62A3267AA0045E02E /* ScreenshotsPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD2C7B52A3267AA0045E02E /* ScreenshotsPagesViewController.swift */; };
 		8DD4B2F52A1D490C0071907E /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD4B2F42A1D490C0071907E /* FirestoreService.swift */; };
 		8DD902992A17F5C5009A4FC4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */; };
 		8DDA0B072A291FF2004E81B7 /* AppDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA0B062A291FF2004E81B7 /* AppDefaultsWrapper.swift */; };
@@ -124,6 +125,7 @@
 		8DC0D6B92A0D822600BCF3C6 /* GameDetailTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTextCell.swift; sourceTree = "<group>"; };
 		8DC0D6BB2A0DF50300BCF3C6 /* GridSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSearchViewController.swift; sourceTree = "<group>"; };
 		8DC0D6BE2A0E2B4F00BCF3C6 /* GameSearchReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchReusableView.swift; sourceTree = "<group>"; };
+		8DD2C7B52A3267AA0045E02E /* ScreenshotsPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsPagesViewController.swift; sourceTree = "<group>"; };
 		8DD4B2F42A1D490C0071907E /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8DDA0B062A291FF2004E81B7 /* AppDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaultsWrapper.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				8DD902982A17F5C5009A4FC4 /* SettingsTableViewController.swift */,
 				8D700C672A300401001D92E5 /* ScreenshotsViewController.swift */,
 				8D4E1D922A310F9E007A2DC0 /* FullSizeImageViewController.swift */,
+				8DD2C7B52A3267AA0045E02E /* ScreenshotsPagesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				8D74C6672A05CA7800E76443 /* IGDBManager.swift in Sources */,
 				8DC0D6BA2A0D822600BCF3C6 /* GameDetailTextCell.swift in Sources */,
 				8D2340D22A044578005A62A9 /* AppDelegate.swift in Sources */,
+				8DD2C7B62A3267AA0045E02E /* ScreenshotsPagesViewController.swift in Sources */,
 				8D2340D42A044578005A62A9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
