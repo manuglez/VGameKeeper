@@ -17,6 +17,7 @@ struct FullGame: Codable {
     let firstReleaseDate, follows: Int?
     let gameModes, genres: [IGDB_Item]?
     let hypes: Int?
+    let involvedCompanies: [InvolvedCompany]?
     let name: String
     let platforms: [Platform]?
     let playerPerspectives: [IGDB_Item]?
@@ -36,6 +37,7 @@ struct FullGame: Codable {
         case follows
         case gameModes = "game_modes"
         case genres, hypes, name, platforms
+        case involvedCompanies = "involved_companies"
         case playerPerspectives = "player_perspectives"
         case screenshots
         case similarGames = "similar_games"

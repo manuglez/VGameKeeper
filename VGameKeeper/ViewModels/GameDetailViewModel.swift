@@ -142,7 +142,6 @@ class GameDetailViewModel: ViewModel {
     private func buildModels() {
         viewItems.removeAll()
         
-        
         let headerItem = DetailModel(
             itemType: .header,
             mainText: ("Title", gameInfo?.name ?? "NO TILE"),
@@ -190,6 +189,50 @@ class GameDetailViewModel: ViewModel {
                 textSet: Set(genres)
             )
             viewItems.append(genreItem)
+        }
+        
+        if let companies = gameInfo?.companies {
+            let sectionItem = DetailModel(
+                itemType: .section,
+                mainText: ("Compañías", "Compañías")
+            )
+            viewItems.append(sectionItem)
+            
+            if let developers = companies[GamePage.COMPANY_DEVLOPERS_KEY]{
+                let devsString = developers.joined(separator: "\n")
+                let devItem = DetailModel(
+                    itemType: .textValue,
+                    mainText: ("Desarrollador", devsString)
+                )
+                viewItems.append(devItem)
+            }
+            
+            if let publishers = companies[GamePage.COMPANY_PUBLISHER_KEY]{
+                let pubsString = publishers.joined(separator: "\n")
+                let pubItem = DetailModel(
+                    itemType: .textValue,
+                    mainText: ("Distribuidor", pubsString)
+                )
+                viewItems.append(pubItem)
+            }
+            
+            if let supporters = companies[GamePage.COMPANY_SUPPORTING_KEY]{
+                let supString = supporters.joined(separator: "\n")
+                let supItem = DetailModel(
+                    itemType: .textValue,
+                    mainText: ("Desarrollador de apoyo", supString)
+                )
+                viewItems.append(supItem)
+            }
+        }
+        
+        if let themes = gameInfo?.themes {
+            let themesItem = DetailModel(
+                itemType: .multipleText,
+                mainText: ("Temáticas", "Temáticas"),
+                textSet: Set(themes)
+            )
+            viewItems.append(themesItem)
         }
         
         if let gameSummary = gameInfo?.summary,
@@ -315,6 +358,37 @@ class GameDetailViewModel: ViewModel {
         game.name = serviceGameInfo.name
         
         game.platforms = serviceGameInfo.platforms?.map { $0.abbreviation ?? $0.name }
+        
+        if let companies = serviceGameInfo.involvedCompanies {
+            game.companies = [:]
+            var developers: [String] = []
+            var publisers: [String] = []
+            var supporting: [String] = []
+            
+            for comp in companies {
+                if comp.developer {
+                    developers.append(comp.company.name)
+                }
+                
+                if comp.publisher {
+                    publisers.append(comp.company.name)
+                }
+                
+                if comp.supporting {
+                    supporting.append(comp.company.name)
+                }
+            }
+            
+            if developers.count > 0 {
+                game.companies?[GamePage.COMPANY_DEVLOPERS_KEY] = developers
+            }
+            if publisers.count > 0 {
+                game.companies?[GamePage.COMPANY_PUBLISHER_KEY] = publisers
+            }
+            if supporting.count > 0 {
+                game.companies?[GamePage.COMPANY_SUPPORTING_KEY] = supporting
+            }
+        }
         
         game.playerPerspectives = serviceGameInfo.playerPerspectives?.map { $0.name }
         

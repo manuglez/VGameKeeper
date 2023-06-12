@@ -19,6 +19,7 @@ struct GamePage: Identifiable {
     var follows: Int = 0
     var hypes: Int = 0
     var name: String = ""
+    var companies: [String: [String]]?
     var platforms, playerPerspectives: [String]?
     var similarGames: [FeaturedGame]?
     var screenshots: [String]?
@@ -26,6 +27,10 @@ struct GamePage: Identifiable {
     var themes: [String]?
     var totalRating: Double?
     var totalRatingCount: Int?
+    
+    static let COMPANY_DEVLOPERS_KEY = "developers"
+    static let COMPANY_PUBLISHER_KEY = "publishers"
+    static let COMPANY_SUPPORTING_KEY = "supporting"
 }
 
 struct AgeRate_Game {
