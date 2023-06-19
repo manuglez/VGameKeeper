@@ -1,6 +1,6 @@
 # VGameKeeper
 
-VGameKeeper uses the IGDB API. 
+VGameKeeper uses the [IGDB API](https://api-docs.igdb.com/). 
 In the /VGameKeeper directory create. Property List (.plist) file named "IGDB-info.plist" file to keep your API keys. 
 This is the XML format:
 ```
