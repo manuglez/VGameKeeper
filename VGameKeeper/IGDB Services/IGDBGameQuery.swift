@@ -17,7 +17,7 @@ enum Query_Endpoints: String {
 
 }
 
-class IGDBGameQuery {
+class IGDBGameQuery: GameQueries {
     // Singleton global instance
     static let shared: IGDBGameQuery = IGDBGameQuery()
     
@@ -140,7 +140,7 @@ class IGDBGameQuery {
         let request = IGDBRequest()
         let responseData = try await request.performPostRequest(urlString: urlString, rawBody: requestBody)
         if let data = responseData {
-            let responseString = String(data: data, encoding: .utf8)
+            //let responseString = String(data: data, encoding: .utf8)
            // print(responseString ?? "NO DATA")
             do {
                 let decodedData = try JSONDecoder().decode(type, from: data)

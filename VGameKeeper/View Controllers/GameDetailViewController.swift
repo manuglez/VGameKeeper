@@ -36,8 +36,8 @@ class GameDetailViewController: UIViewController{
         if let game = self.gameInfo {
             self.navigationItem.backButtonTitle = game.name
             gameViewModel.fetchGameFullInfo(
-                gameID: game.dbIdentifier) {
-                   self.updateData()
+                gameID: game.dbIdentifier) { [weak self] in
+                   self?.updateData()
                 }
         }
     }
@@ -95,12 +95,12 @@ class GameDetailViewController: UIViewController{
         showSheetAlert(
             title: "Seleccione una colección a agregar el juego",
             message: "Colecciones disponibles:",
-            buttonItems: listaColecciones) { selectedIndex in
+            buttonItems: listaColecciones) { [weak self] selectedIndex in
                 print("Selected Index: \(selectedIndex)")
                 
                 if selectedIndex != -1 {
                     
-                    self.addGameToCollection(collectionCategory: selectedIndex)
+                    self?.addGameToCollection(collectionCategory: selectedIndex)
                 }
             }
     }

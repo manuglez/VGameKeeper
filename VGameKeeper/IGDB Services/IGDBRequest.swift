@@ -37,7 +37,19 @@ class IGDBRequest {
         urlRequest.setValue(client_id, forHTTPHeaderField: "Client-ID")
         urlRequest.setValue("Bearer \(accesToken)", forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
-        let (responseData, _) = try await URLSession.shared.data(for: urlRequest)
+        let (responseData, urlResponse) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard let httpResponse = urlResponse as? HTTPURLResponse else {
+            logger.debug("🚨 URL Response error")
+            return nil
+        }
+        
+        guard httpResponse.statusCode == 200 else {
+            logger.debug("🚨 Error Status code (\(httpResponse.statusCode))")
+            let d = httpResponse.description
+            logger.debug("🚨 Description: \(d)")
+            return nil
+        }
         
         return responseData
     }

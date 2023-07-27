@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     //let imagesArray = ["nintendo_switch", "PC", "ps5", "xbox_seriesx"]
     let imagesArray = ["assasinscreed", "lastofus_part1", "re4_remake", "tloz_totk"]
     
-    let discoverViewModel = DiscoverViewModel()
+    var discoverViewModel: DiscoverViewModel! = nil
     var selectedGame: FeaturedGame?
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        discoverViewModel = DiscoverViewModel(gameQueries: IGDBGameQuery.shared)
         tableView.register(UINib(nibName: "HorizontalGridGameCell", bundle: nil), forCellReuseIdentifier: HorizontalGridGameCell.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,15 +33,19 @@ class HomeViewController: UIViewController {
     }
     
     func reloadData(includeFlags: Bool = false) {
-        discoverViewModel.fetchDiscoveries {
+        discoverViewModel.fetchDiscoveries { [weak self] in
             print("Discoveries fetched")
+            
             if includeFlags {
-                for i in 0...self.discoverViewModel.discoveries.count-1 {
-                    self.discoverViewModel.discoveries[i].reloadPending = true
+                let itemsCount = self?.discoverViewModel.discoveries.count ?? 0
+                if itemsCount > 0 {
+                    for i in 0...itemsCount-1 {
+                        self?.discoverViewModel.discoveries[i].reloadPending = true
+                    }
                 }
             }
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }

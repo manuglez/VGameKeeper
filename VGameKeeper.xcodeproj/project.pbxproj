@@ -25,6 +25,17 @@
 		8D28A70D2A0B4ED600C3D7C3 /* FullGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */; };
 		8D2A58262A2A88C300952B03 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2A58252A2A88C300952B03 /* Utils.swift */; };
 		8D4E1D932A310F9E007A2DC0 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4E1D922A310F9E007A2DC0 /* FullSizeImageViewController.swift */; };
+		8D5A3C392A722D6A00EF08ED /* VGameKeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5A3C382A722D6A00EF08ED /* VGameKeeperTests.swift */; };
+		8D5A3C402A722D8900EF08ED /* TestGameQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5A3C3F2A722D8900EF08ED /* TestGameQueries.swift */; };
+		8D5A3C412A722E5A00EF08ED /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE938842A08E1F5000920C0 /* DiscoverViewModel.swift */; };
+		8D5A3C422A722F4700EF08ED /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1562EB2A076B100000F850 /* Game.swift */; };
+		8D5A3C432A72322700EF08ED /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F76102A0EC42300015A1C /* ViewModel.swift */; };
+		8D5A3C442A72323B00EF08ED /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE938892A08E2A2000920C0 /* DiscoverModel.swift */; };
+		8D5A3C452A72327700EF08ED /* FeaturedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9388B2A08E344000920C0 /* FeaturedGame.swift */; };
+		8D5A3C462A7232D100EF08ED /* Cover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7CE8702A09AF130096C330 /* Cover.swift */; };
+		8D5A3C472A7232D700EF08ED /* IGDB_Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1562ED2A076B340000F850 /* IGDB_Item.swift */; };
+		8D5A3C482A72331D00EF08ED /* Realease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D74C66C2A06339F00E76443 /* Realease.swift */; };
+		8D5A3C492A72336700EF08ED /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C652A2FF45F001D92E5 /* Platform.swift */; };
 		8D6F760F2A0EBF2700015A1C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */; };
 		8D6F76112A0EC42300015A1C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F76102A0EC42300015A1C /* ViewModel.swift */; };
 		8D700C612A2FCAB8001D92E5 /* TextSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */; };
@@ -72,6 +83,16 @@
 		8DF56E762A36994B00F2A48E /* InvolvedCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF56E752A36994B00F2A48E /* InvolvedCompany.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8D5A3C3A2A722D6A00EF08ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D2340C62A044578005A62A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D2340CD2A044578005A62A9;
+			remoteInfo = VGameKeeper;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8D1562EB2A076B100000F850 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		8D1562ED2A076B340000F850 /* IGDB_Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDB_Item.swift; sourceTree = "<group>"; };
@@ -93,6 +114,9 @@
 		8D28A70C2A0B4ED600C3D7C3 /* FullGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGame.swift; sourceTree = "<group>"; };
 		8D2A58252A2A88C300952B03 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8D4E1D922A310F9E007A2DC0 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
+		8D5A3C362A722D6A00EF08ED /* VGameKeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VGameKeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5A3C382A722D6A00EF08ED /* VGameKeeperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VGameKeeperTests.swift; sourceTree = "<group>"; };
+		8D5A3C3F2A722D8900EF08ED /* TestGameQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGameQueries.swift; sourceTree = "<group>"; };
 		8D6F760E2A0EBF2700015A1C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
 		8D6F76102A0EC42300015A1C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8D700C5F2A2FCAB8001D92E5 /* TextSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSetCell.swift; sourceTree = "<group>"; };
@@ -148,6 +172,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D5A3C332A722D6A00EF08ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -155,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2340D02A044578005A62A9 /* VGameKeeper */,
+				8D5A3C372A722D6A00EF08ED /* VGameKeeperTests */,
 				8D2340CF2A044578005A62A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2340CE2A044578005A62A9 /* VGameKeeper.app */,
+				8D5A3C362A722D6A00EF08ED /* VGameKeeperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,6 +231,15 @@
 				8D2A58252A2A88C300952B03 /* Utils.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		8D5A3C372A722D6A00EF08ED /* VGameKeeperTests */ = {
+			isa = PBXGroup;
+			children = (
+				8D5A3C382A722D6A00EF08ED /* VGameKeeperTests.swift */,
+				8D5A3C3F2A722D8900EF08ED /* TestGameQueries.swift */,
+			);
+			path = VGameKeeperTests;
 			sourceTree = "<group>";
 		};
 		8D74C65E2A05904400E76443 /* IGDB Services */ = {
@@ -372,6 +414,24 @@
 			productReference = 8D2340CE2A044578005A62A9 /* VGameKeeper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8D5A3C352A722D6A00EF08ED /* VGameKeeperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D5A3C3E2A722D6A00EF08ED /* Build configuration list for PBXNativeTarget "VGameKeeperTests" */;
+			buildPhases = (
+				8D5A3C322A722D6A00EF08ED /* Sources */,
+				8D5A3C332A722D6A00EF08ED /* Frameworks */,
+				8D5A3C342A722D6A00EF08ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D5A3C3B2A722D6A00EF08ED /* PBXTargetDependency */,
+			);
+			name = VGameKeeperTests;
+			productName = VGameKeeperTests;
+			productReference = 8D5A3C362A722D6A00EF08ED /* VGameKeeperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -384,6 +444,10 @@
 				TargetAttributes = {
 					8D2340CD2A044578005A62A9 = {
 						CreatedOnToolsVersion = 14.3;
+					};
+					8D5A3C352A722D6A00EF08ED = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 8D2340CD2A044578005A62A9;
 					};
 				};
 			};
@@ -404,6 +468,7 @@
 			projectRoot = "";
 			targets = (
 				8D2340CD2A044578005A62A9 /* VGameKeeper */,
+				8D5A3C352A722D6A00EF08ED /* VGameKeeperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -422,6 +487,13 @@
 				8DBBDFD22A199709003942C7 /* DiscoverCollectionViewCell.xib in Resources */,
 				8DA0EB712A16B1B10004A9CA /* AppColors.xcassets in Resources */,
 				8DBBDFD02A199081003942C7 /* HorizontalGridGameCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5A3C342A722D6A00EF08ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +557,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D5A3C322A722D6A00EF08ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5A3C442A72323B00EF08ED /* DiscoverModel.swift in Sources */,
+				8D5A3C432A72322700EF08ED /* ViewModel.swift in Sources */,
+				8D5A3C412A722E5A00EF08ED /* DiscoverViewModel.swift in Sources */,
+				8D5A3C402A722D8900EF08ED /* TestGameQueries.swift in Sources */,
+				8D5A3C472A7232D700EF08ED /* IGDB_Item.swift in Sources */,
+				8D5A3C482A72331D00EF08ED /* Realease.swift in Sources */,
+				8D5A3C492A72336700EF08ED /* Platform.swift in Sources */,
+				8D5A3C392A722D6A00EF08ED /* VGameKeeperTests.swift in Sources */,
+				8D5A3C462A7232D100EF08ED /* Cover.swift in Sources */,
+				8D5A3C452A72327700EF08ED /* FeaturedGame.swift in Sources */,
+				8D5A3C422A722F4700EF08ED /* Game.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8D5A3C3B2A722D6A00EF08ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D2340CD2A044578005A62A9 /* VGameKeeper */;
+			targetProxy = 8D5A3C3A2A722D6A00EF08ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8D2340D72A044578005A62A9 /* Main.storyboard */ = {
@@ -683,6 +781,42 @@
 			};
 			name = Release;
 		};
+		8D5A3C3C2A722D6A00EF08ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XZZ74444UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mgl.VGameKeeperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VGameKeeper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VGameKeeper";
+			};
+			name = Debug;
+		};
+		8D5A3C3D2A722D6A00EF08ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XZZ74444UP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mgl.VGameKeeperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VGameKeeper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VGameKeeper";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -700,6 +834,15 @@
 			buildConfigurations = (
 				8D2340E62A044579005A62A9 /* Debug */,
 				8D2340E72A044579005A62A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D5A3C3E2A722D6A00EF08ED /* Build configuration list for PBXNativeTarget "VGameKeeperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D5A3C3C2A722D6A00EF08ED /* Debug */,
+				8D5A3C3D2A722D6A00EF08ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
